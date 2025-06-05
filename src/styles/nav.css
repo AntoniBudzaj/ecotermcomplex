@@ -1,0 +1,12 @@
+.nav-btn {
+  @apply bg-white;
+  @apply border-none;
+  @apply text-2xl;
+  height: fit-content;
+  width: fit-content;
+  transition: text-shadow 0.2s ease-in-out;
+}
+
+.nav-btn:hover {
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
