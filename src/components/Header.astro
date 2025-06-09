@@ -1,32 +1,25 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
+import logo from "../assets/imges/ETC-logo.svg";
+import Image from "astro/components/Image.astro";
 ---
 
 <header id="header-main" class="header-main w-screen flex justify-between p-5">
   <div class="">
-    <button id="nav-logo-btn" class="logo-btn w-40" onclick="redirectStrGł()">
-      <img id="nav-logo-img" class="" src="/public/ETC-logo.svg" />
-    </button>
+    <a href="/" class="logo-btn w-32 block">
+      <Image id="nav-logo-img" src={logo} alt="ETC logo" />
+    </a>
   </div>
   <nav
-    id="header-nav"
+    id="
+        header-nav"
     class="flex justify-between gap-24 w-fit px-10 items-center"
   >
-    <button id="nav-about-us" class="nav-btn" onclick="redirectOnas()"
-      >O nas</button
-    >
-    <button id="nav-about-us" class="nav-btn" onclick="redirectCoRobimy()"
-      >Nasze usługi</button
-    >
-    <button id="nav-about-us" class="nav-btn" onclick="redirectAktualności()"
-      >Aktualności</button
-    >
-    <button id="nav-about-us" class="nav-btn" onclick="redirectKontakt()"
-      >Kontakt</button
-    >
-    <button id="nav-about-us" class="nav-btn" onclick="redirectETCheck()"
-      >ETCheck</button
-    >
+    <a href="/about" class="nav-btn">O nas</a>
+    <a href="/services" class="nav-btn">Nasze usługi</a>
+    <a href="/news" class="nav-btn">Aktualności</a>
+    <a href="/contact" class="nav-btn">Kontakt</a>
+    <a href="/etcheck" class="nav-btn">ETCheck</a>
   </nav>
 </header>

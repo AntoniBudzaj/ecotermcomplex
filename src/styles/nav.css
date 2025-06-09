@@ -1,7 +1,7 @@
 .nav-btn {
   @apply bg-white;
   @apply border-none;
-  @apply text-2xl;
+  @apply text-xl;
   height: fit-content;
   width: fit-content;
   transition: text-shadow 0.2s ease-in-out;
