@@ -1,273 +1,277 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
 <meta charset="utf-8" />
-<style>
-  .p1 {
-    font-size: 1.2vw;
-    font-family: Arial, Helvetica, sans-serif;
-    position: absolute;
-    left: 21.5%;
-    bottom: 34.41%;
-    text-align: center;
-  }
 
-  .container {
-    position: relative;
-    color: black;
-  }
-
-  .btnMenuGł {
-    font-family: Arial, Helvetica, sans-serif;
-    background: none;
-    color: black;
-    font-size: 1.2vw;
-    size: 1.2vw;
-    border: none;
-    padding: 10px;
-  }
-
-  .btnMenuGł:hover {
-    color: #6bb30d;
-    text-decoration: underline;
-  }
-
-  .logoStrGł {
-    position: absolute;
-    width: 10vw;
-    left: 1%;
-    border: 0;
-  }
-
-  .row {
-    text-align: left;
-    position: absolute;
-    top: 5%;
-    left: 10%;
-    display: flex;
-  }
-
-  .textRowBottom {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 20px;
-
-    font-size: 0.7vw;
-  }
-
-  .row2 {
-    display: flex;
-    float: left;
-    text-align: left;
-    size: 20%;
-    bottom: 10%;
-  }
-
-  .rowMenuGł2 {
-    text-align: center;
-    bottom: -10vw;
-    left: 34vw;
-  }
-
-  .rowImgs {
-    display: flex;
-    padding: 8vw;
-  }
-
-  .column {
-    flex: 33.33%;
-  }
-
-  .btnDowiedzSięWięcej {
-    position: relative;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background: lightgray;
-    color: black;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 30px;
-    text-align: center;
-  }
-
-  .btnDowiedzSięWięcej:hover {
-    background-color: #9fdd4d;
-  }
-
-  .ecoNames {
-    font-family: Arial, Helvetica, sans-serif;
-    position: relative;
-    text-align: center;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    font-size: 50px;
-    font-style: italic;
-  }
-</style>
-
-<header class="container">
-  <img
-    src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Group-1@7x-3-1-scaled.jpeg"
-    style=" width: 100%;"
-    alt="background"
-  />
-  <button class="logoStrGł" onclick="redirectStrGł()">
-    <img class="logoStrGł" src="/src/assets/ETC-logo.svg" />
-  </button>
-
-  <div class="row rowMenuGł">
-    <button class="btnMenuGł btnOnas" onclick="redirectOnas()">About us</button>
-    <button class="btnMenuGł btnCorobimy" onclick="redirectCoRobimy()"
-      >Our services</button
-    >
-    <button class="btnMenuGł btnAktualności" onclick="redirectAktualności()"
-      >News</button
-    >
-    <button class="btnMenuGł btnKontakt" onclick="redirectKontakt()"
-      >Contact</button
-    >
-    <button class="btnMenuGł btnETCheck" onclick="redirectETCheck()"
-      >ETCheck</button
-    >
-  </div>
-
-  <div class="p1">
-    Complex solutions<br />in the field of energy and biofuels.
-  </div>
-</header>
-
-<br /><br /><br />
-<h1
-  style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 2vw; color:#9fdd4d;"
->
-  What our company offers?
-</h1>
-
-<body
-  background="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Home-5@7x-1-e1694991585261.png"
-  style="background-repeat: no-repeat; line-height: 1 !important;"
->
-  <div class="rowImgs">
-    <div class="column">
-      <img
-        src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/budynki_1x-removebg-preview.png"
-        alt="buildingsCoRobimy"
-        style="width: 100%;"
-      />
-      <h1 class="ecoNames" style="top:14%; color:lightblue">EcoTerm</h1>
-      <button class="btnDowiedzSięWięcej"><b>Find out more</b></button>
-    </div>
-    <div class="column">
-      <img
-        src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/dom_robotnicy-removebg-preview.png"
-        alt="constructionCoRobimy"
-        style="width: 100%;"
-      />
-      <h2 class="ecoNames" style="top:16%; color:gray">EcoConstruct</h2>
-      <button
-        class="btnDowiedzSięWięcej"
-        onclick="document.getElementById('middle').scrollIntoView();"
-        style="top:16%;"><b>Find out more</b></button
-      >
-    </div>
-    <div class="column">
-      <img
-        src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/silosy.png"
-        alt="silosCoRobimy"
-        style="width: 100%;"
-      />
-      <h3 class="ecoNames" style="top:15%; color:darkolivegreen">EcoMetan</h3>
-      <button class="btnDowiedzSięWięcej" style="top:13%;"
-        ><b>Find out more</b></button
-      >
-    </div>
-  </div>
-
-  <div
-    style="
-    padding-top: 5vw;
-    padding-bottom: 5vw;
-        text-align: center;
-		-webkit-filter: grayscale(100%);
-		filter: grayscale(100%);"
+<BaseLayout>
+  <!-- Hero Section -->
+  <section
+    class="relative min-h-[80vh] bg-gradient-to-r from-etc-500 to-etc-200"
   >
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.891691416013!2d16.923419612598494!3d52.42676014301164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b546f6711a7%3A0x2dae340e96dd3d34!2sOzimina%2018A%2C%2061-664%20Pozna%C5%84!5e0!3m2!1spl!2spl!4v1693133991318!5m2!1spl!2spl"
-      width="90%"
-      height="20%"
-      frameborder="0"
-      style="border:50"
-      allowfullscreen></iframe>
-  </div>
-  <br /><br /><br /><br /><br /><br />
-  <footer>
-    <div class="row2 rowBottomGł">
-      <img
-        src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/LOGO_ECOTERM_COMPLEX.3213.png"
-        alt="logo"
-        width="20%"
-      />
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative container mx-auto px-4 h-full flex items-center">
+      <div class="max-w-3xl text-white">
+        <h1 class="text-5xl font-bold mb-6">Transforming Waste into Energy</h1>
+        <p class="text-xl mb-8">
+          Leading biogas consulting firm specializing in sustainable energy
+          solutions, helping businesses convert organic waste into renewable
+          energy.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="/services"
+            class="bg-white px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
+          >
+            Our Services
+          </a>
+          <a
+            href="/contact"
+            class="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
     </div>
-    <br /><br /><br /><br /><br /><br />
+  </section>
 
-    <div class="textRowBottom">
-      Ecotermcomplex Sp. z o.o.<br />NIP: 7831764146<br />Account Nr: 65 1140
-      2004 0000 3602 7896 9347
+  <!-- Services Overview -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-green-800">
+        Comprehensive Biogas Solutions
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div
+            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8 text-green-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-green-800">
+            Feasibility Studies
+          </h3>
+          <p class="text-gray-600">
+            Comprehensive analysis of your waste streams and energy potential,
+            helping you make informed decisions about biogas implementation.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div
+            class="w-16 h-16 bg-etc-200 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8 text-etc-dark"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-green-800">
+            Project Development
+          </h3>
+          <p class="text-gray-600">
+            End-to-end project management from design to implementation,
+            ensuring your biogas plant meets all regulatory requirements.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div
+            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              class="w-8 h-8 text-green-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-green-800">Optimization</h3>
+          <p class="text-gray-600">
+            Maximize your biogas production efficiency with our expert
+            optimization services and ongoing technical support.
+          </p>
+        </div>
+      </div>
     </div>
-    <br /><br />
-    <div class="rowMenuGł2">
-      <button class="btnMenuGł btnOnas" onclick="redirectOnas()"
-        >About us</button
-      >
-      <button class="btnMenuGł btnCorobimy" onclick="redirectCoRobimy()"
-        >Our services</button
-      >
-      <button class="btnMenuGł btnAktualności" onclick="redirectAktualności()"
-        >News</button
-      >
-      <button class="btnMenuGł btnKontakt" onclick="redirectKontakt()"
-        >Contact</button
-      >
-      <button class="btnMenuGł btnETCheck" onclick="redirectETCheck()"
-        >ETCheck</button
-      >
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-green-800">
+        Why Choose Our Expertise
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2 text-green-800">
+              Industry Experience
+            </h3>
+            <p class="text-gray-600">
+              Over 15 years of experience in biogas project development and
+              implementation across various industries.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2 text-green-800">
+              Certified Experts
+            </h3>
+            <p class="text-gray-600">
+              Our team consists of certified engineers and environmental
+              specialists with deep expertise in biogas technology.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2 text-green-800">
+              Global Network
+            </h3>
+            <p class="text-gray-600">
+              Access to a worldwide network of partners and suppliers for the
+              best biogas technology solutions.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2 text-green-800">
+              Fast Implementation
+            </h3>
+            <p class="text-gray-600">
+              Streamlined processes and efficient project management to get your
+              biogas plant up and running quickly.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
-</body>
+  </section>
 
-<script>
-  let urlOnas = "https://ecotermcomplex.pl/?page_id=2383";
-  let urlStrGł = "https://ecotermcomplex.pl";
-  let urlCoRobimy = "https://ecotermcomplex.pl/?page_id=1949";
-  let urlAktualności = "https://ecotermcomplex.pl/?page_id=2445";
-  let urlKontakt = "https://ecotermcomplex.pl/?page_id=2034";
-  let urlETCheck = "https://ecotermcomplex.pl/?page_id=2172";
-
-  window.addEventListener("click", (event) => {
-    let xperc = (event.offsetX / screen.width) * 100;
-    let yperc = (event.offsetY / screen.width) * 100;
-
-    console.log("left: " + xperc.toFixed(2), ", down: " + yperc.toFixed(2));
-  });
-
-  function redirectStrGł() {
-    window.location.href = urlStrGł;
-  }
-  function redirectOnas() {
-    window.location.href = urlOnas;
-  }
-
-  function redirectCoRobimy() {
-    window.location.href = urlCoRobimy;
-  }
-  function redirectAktualności() {
-    window.location.href = urlAktualności;
-  }
-  function redirectKontakt() {
-    window.location.href = urlKontakt;
-  }
-  function redirectETCheck() {
-    window.location.href = urlETCheck;
-  }
-</script>
+  <!-- CTA Section -->
+  <section class="py-20 bg-green-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        Ready to Transform Your Waste into Energy?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Contact us today to discuss how we can help you implement sustainable
+        biogas solutions for your business.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-white text-green-800 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
+      >
+        Get Started
+      </a>
+    </div>
+  </section>
+</BaseLayout>

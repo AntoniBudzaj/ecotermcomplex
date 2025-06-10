@@ -1,0 +1,319 @@
+<meta charset="utf-8">
+<style>
+    .wp-block-navigation__responsive-container-open {
+        display: none !important;
+    }
+
+    .wp-block-site-logo {
+        display: none !important;
+    }
+
+    .wp-block-post-title {
+        display: none !important;
+    }
+
+    .wp-block-site-title {
+        display: none !important;
+    }
+
+    .has-text-align-right {
+        display: none !important;
+    }
+
+    .btnMenuGł {
+        font-family: Arial, Helvetica, sans-serif;
+        background: none;
+        color: black;
+        font-size: 2vw;
+        border: none;
+        padding: 3vw;
+        display: inline-block;
+    }
+
+
+    .btnMenuGł:hover {
+        color: #6bb30d;
+        text-decoration: underline;
+    }
+
+    .logoStrGł {
+        width: 10vw;
+
+        border: 0;
+    }
+
+    .textFooter {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.7w;
+        font-size: 1.2vw;
+
+    }
+
+    .rowImgs {
+        display: flex;
+        padding: 8vw;
+
+    }
+
+    .column {
+        flex: 33.33%;
+    }
+
+    .btnDowiedzSięWięcej {
+        position: relative;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background: rgb(231, 231, 231);
+        color: black;
+        font-size: 1vw;
+        padding: 10vw, 20vw;
+        border-radius: 30px;
+        cursor: pointer;
+        size: 1px;
+        text-align: center;
+        border: #9fdd4d;
+    }
+
+    .btnDowiedzSięWięcej:hover {
+        background-color: #9fdd4d
+    }
+
+    .ecoNames {
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        font-size: 2vw;
+        font-style: italic;
+    }
+
+    h4 {
+        font-size: 3vw;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+    }
+
+    .rowEcoTerm {
+        display: flex;
+        padding: 8vw;
+    }
+
+    .columnEcoTerm {
+        flex: 50vw;
+    }
+</style>
+
+<body background="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Home-5@7x-1-e1694991585261.png"
+    style="background-repeat: no-repeat; line-height: 1 !important;">
+
+   <header>
+            <div style=" display: flex; position: sticky;">
+                <button class="btnLogoStrGł" onclick="redirectStrGł()" style="background: none;
+            border: none; flex: 10vw;">
+                    <img class="logoStrGł" src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Logo-1.png" />
+                </button>
+
+
+                <div class="rowMenuGł" style="flex: 90vw; text-align: right;">
+
+                    <button class="btnMenuGł btnOnas" onclick="redirectOnas()">O nas</button>
+                    <button class="btnMenuGł btnCorobimy" onclick="redirectCoRobimy()">Co robimy</button>
+                    <button class="btnMenuGł btnAktualności" onclick="redirectAktualności()">Aktualności</button>
+                    <button class="btnMenuGł btnKontakt" onclick="redirectKontakt()">Kontakt</button>
+                    <button class="btnMenuGł btnETCheck" onclick="redirectETCheck()">ETCheck</button>
+
+                </div>
+            </div>
+        </header>
+
+    <div style="color:#6bb30d; font-size: 4vw; font-family: Arial, Helvetica, sans-serif; text-align: center; padding-top:3vw; ">
+        Czym się zajmujemy?
+    </div>
+    <div class="rowImgs">
+        <div class="column">
+
+            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/budynki-1.png" alt="buildingsCoRobimy"
+                style="width: 100%;">
+            <h1 class="ecoNames" style="top:14%; color:lightblue">
+                EcoTerm
+            </h1>
+            <button class="btnDowiedzSięWięcej" onclick="scrollLowerEcoTerm()"><b>Dowiedz się
+                    więcej</b></button>
+        </div>
+        <div class="column">
+            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/dom-robotnicy.png" alt="constructionCoRobimy"
+                style="width: 100%;">
+            <h2 class="ecoNames" style="top:16%; color:gray">
+                EcoConstruct
+            </h2>
+            <button class="btnDowiedzSięWięcej" onclick="scrollLowerEcoConstruct()" style="top:16%;"><b>Dowiedz się
+                    więcej</b></button>
+        </div>
+        <div class="column">
+            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/silosy.png" alt="silosCoRobimy"
+                style="width: 100%;">
+            <h3 class="ecoNames" style="top:15%; color:darkolivegreen">
+                EcoMetan
+            </h3>
+            <button class="btnDowiedzSięWięcej" onclick="scrollLowerEcoMetan()" style="top:13%;"><b>Dowiedz się
+                    więcej</b></button>
+        </div>
+    </div>
+
+    <div class="rowEcoTerm">
+
+        <div class="columnEcoTerm">
+            <h4 style="color:lightblue">
+                EcoTerm
+            </h4>
+
+            <ul id="listNr1" style="font-size: 2vw; font-family: Arial, Helvetica, sans-serif; line-height: 3vw;">
+
+                <li>Optymalizacja energetyczna</li>
+                <li>Charakterystyki energetyczne</li>
+                <li>Audyty</li>
+                <li>Optymalizacja energetyczna budynków <color style="color: #6bb30d;"><b>ETCheck</b></color>
+                </li>
+            </ul>
+        </div>
+        <div class="columnEcoTerm">
+            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/budynki-i-drzewa.png" alt="" width="100%">
+        </div>
+    </div>
+
+    <div class="rowEcoTerm">
+        <div class="columnEcoTerm">
+            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/dom-robotnicy.png" alt="" width="100%">
+        </div>
+        <div class="columnEcoTerm">
+            <h4 style="color:darkgrey">
+                EcoConstruct
+            </h4>
+
+            <ul id="listNr2" style="font-size: 2vw; font-family: Arial, Helvetica, sans-serif; line-height: 3vw;">
+
+                <li>Realizacja i nadzór inwestycji przyjaznych środowisk</li>
+
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="rowEcoTerm">
+
+        <div class="columnEcoTerm">
+            <h4 style="color:darkolivegreen">
+                EcoMetan
+            </h4>
+
+            <ul id="listNr3" style="font-size: 2vw; font-family: Arial, Helvetica, sans-serif; line-height: 3vw;">
+
+                <li>Projektowanie i rozwój instalacji zrównoważonych<br>
+                    energetyczie i biopaliw
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="columnEcoTerm">
+            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/silosy.png" alt="" width="100%">
+        </div>
+    </div>
+
+
+    <footer style="padding-top: 10vw;">
+        <hr color="#9fdd4d" width="100%" style="padding-left: none!important;">
+
+        <div style="display: flex;">
+            <div style=" flex:50vw; ">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.891691416013!2d16.923419612598494!3d52.42676014301164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b546f6711a7%3A0x2dae340e96dd3d34!2sOzimina%2018A%2C%2061-664%20Pozna%C5%84!5e0!3m2!1spl!2spl!4v1693133991318!5m2!1spl!2spl"
+                    width="100%" height="80%" frameborder="0" style="border:50" allowfullscreen></iframe>
+
+            </div>
+
+            <div class="adressFooter textFooter" style="flex:20vw;padding-left: 1vw;">
+                <p>
+                    <color style="color: #6bb30d;">Dane adresowe</color>
+                    <br><br>
+                    Ecotermcomplex Sp. z o.o<br>Ul: Ozimina 18a<br>61-664-Poznań
+                </p>
+            </div>
+            <div class="compnayInfoFooter textFooter" style="flex:30vw;">
+                <p>
+                    Ecotermcomplex Sp. z o.o.<br>
+                    tel. kom. +48 695 850 296<br>
+                    mail: biuro@ecotermcomplex.pl<br>
+                    NIP: 7831764146<br>
+                    REGON: 368207463<br>
+                    Nr konta: 65 1140 2004 0000 3602 7896 9347<br>
+                </p>
+                <div class=" row2 rowBottomGł" style="text-align: right; ">
+                    <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/LOGO_ECOTERM_COMPLEX.3213.png"
+                        alt="logo" width="60%">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+</body>
+
+
+<script>
+    Element.scrollIntoView
+
+    let urlOnas = "https://ecotermcomplex.pl/?page_id=2383";
+    let urlStrGł = "https://ecotermcomplex.pl";
+    let urlCoRobimy = "https://ecotermcomplex.pl/?page_id=1949";
+    let urlAktualności = "https://ecotermcomplex.pl/?page_id=2445";
+    let urlKontakt = "https://ecotermcomplex.pl/?page_id=2034";
+    let urlETCheck = "https://ecotermcomplex.pl/?page_id=2172";
+
+    window.addEventListener("click", (event) => {
+        let xperc = event.offsetX / screen.width * 100;
+        let yperc = event.offsetY / screen.width * 100;
+
+        console.log("left: " + xperc.toFixed(2), ", down: " + yperc.toFixed(2));
+    });
+
+    function redirectStrGł() {
+        window.location.href = urlStrGł;
+
+    }
+    function redirectOnas() {
+        window.location.href = urlOnas;
+    }
+
+    function redirectCoRobimy() {
+        window.location.href = urlCoRobimy;
+    }
+    function redirectAktualności() {
+        window.location.href = urlAktualności;
+    }
+    function redirectKontakt() {
+        window.location.href = urlKontakt;
+    }
+    function redirectETCheck() {
+        window.location.href = urlETCheck;
+    }
+
+    function scrollLowerEcoTerm() {
+        document.getElementById('listNr1').scrollIntoView({ behavior: "smooth", block: "center" })
+    }
+    function scrollLowerEcoConstruct() {
+        document.getElementById('listNr2').scrollIntoView({ behavior: "smooth", block: "center" })
+    }
+    function scrollLowerEcoMetan() {
+        document.getElementById('listNr3').scrollIntoView({ behavior: "smooth", block: "center" })
+    }
+
+
+
+</script>
+</meta>

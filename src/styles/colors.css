@@ -1,55 +1,13 @@
 @theme {
-  /* Primary brand colors (etc) */
-  --color-etc-50: oklch(0.98 0.02 240);
-  --color-etc-100: oklch(0.95 0.03 240);
-  --color-etc-200: oklch(0.9 0.05 240);
-  --color-etc-300: oklch(0.85 0.08 240);
-  --color-etc-400: oklch(0.8 0.12 240);
-  --color-etc-500: oklch(0.75 0.15 240); /* Main brand color */
-  --color-etc-600: oklch(0.7 0.18 240);
-  --color-etc-700: oklch(0.65 0.2 240);
-  --color-etc-800: oklch(0.6 0.22 240);
-  --color-etc-900: oklch(0.55 0.24 240);
-  --color-etc-950: oklch(0.5 0.26 240);
-
-  /* Secondary colors (eco) */
-  --color-eco-50: oklch(0.98 0.02 120);
-  --color-eco-100: oklch(0.95 0.04 120);
-  --color-eco-200: oklch(0.9 0.06 120);
-  --color-eco-300: oklch(0.85 0.08 120);
-  --color-eco-400: oklch(0.8 0.1 120);
-  --color-eco-500: oklch(0.75 0.12 120); /* Main eco color (#91C73E) */
-  --color-eco-600: oklch(0.7 0.14 120);
-  --color-eco-700: oklch(0.65 0.16 120);
-  --color-eco-800: oklch(0.6 0.18 120);
-  --color-eco-900: oklch(0.55 0.2 120);
-  --color-eco-950: oklch(0.5 0.22 120);
-
-  /* Accent colors */
-  --color-accent-50: oklch(0.98 0.02 60);
-  --color-accent-100: oklch(0.95 0.04 60);
-  --color-accent-200: oklch(0.9 0.06 60);
-  --color-accent-300: oklch(0.85 0.08 60);
-  --color-accent-400: oklch(0.8 0.1 60);
-  --color-accent-500: oklch(0.75 0.12 60); /* Main accent color */
-  --color-accent-600: oklch(0.7 0.14 60);
-  --color-accent-700: oklch(0.65 0.16 60);
-  --color-accent-800: oklch(0.6 0.18 60);
-  --color-accent-900: oklch(0.55 0.2 60);
-  --color-accent-950: oklch(0.5 0.22 60);
-
-  /* Utility colors */
-  --color-white: oklch(1 0 0);
-  --color-black: oklch(0 0 0);
-  --color-gray-50: oklch(0.98 0 0);
-  --color-gray-100: oklch(0.95 0 0);
-  --color-gray-200: oklch(0.9 0 0);
-  --color-gray-300: oklch(0.85 0 0);
-  --color-gray-400: oklch(0.8 0 0);
-  --color-gray-500: oklch(0.75 0 0);
-  --color-gray-600: oklch(0.7 0 0);
-  --color-gray-700: oklch(0.65 0 0);
-  --color-gray-800: oklch(0.6 0 0);
-  --color-gray-900: oklch(0.55 0 0);
-  --color-gray-950: oklch(0.5 0 0);
+  --color-etc-500: #91c73e;
+  --color-etc-300: #a8de54;
+  --color-etc-200: #c0e680;
+  --color-etc-100: #d8edab;
+  --color-etc-50: #e6f2d0;
+  --color-etc-dark: #6ba71e;
+  --color-etc-dark-2: #6ba71e;
+  --color-etc-dark-3: #6ba71e;
+  --color-etc-dark-4: #6ba71e;
+  --color-etc-dark-5: #6ba71e;
+  --color-etc-dark-6: #6ba71e;
 }
