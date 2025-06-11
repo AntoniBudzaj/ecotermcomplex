@@ -1,9 +1,106 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
-    <path d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L67 45.5c-.4-1.7-1.6-2.8-2.9-2.8-1.3 0-2.5 1.1-2.9 2.7L50.4 78.5Zm-1.1 28.2Zm-4.2-20.2c-2 6.6-.6 15.8 4.2 20.2a17.5 17.5 0 0 1 .2-.7 5.5 5.5 0 0 1 5.7-4.5c2.8.1 4.3 1.5 4.7 4.7.2 1.1.2 2.3.2 3.5v.4c0 2.7.7 5.2 2.2 7.4a13 13 0 0 0 5.7 4.9v-.3l-.2-.3c-1.8-5.6-.5-9.5 4.4-12.8l1.5-1a73 73 0 0 0 3.2-2.2 16 16 0 0 0 6.8-11.4c.3-2 .1-4-.6-6l-.8.6-1.6 1a37 37 0 0 1-22.4 2.7c-5-.7-9.7-2-13.2-6.2Z" />
-    <style>
-        path { fill: #000; }
-        @media (prefers-color-scheme: dark) {
-            path { fill: #FFF; }
-        }
-    </style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="72mm"
+   height="40mm"
+   viewBox="0 0 72 40"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (1:1.4.2+202505120737+ebf0e940d0)"
+   sodipodi:docname="ETC-logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="137.17872"
+     inkscape:cy="133.11285"
+     inkscape:window-width="1280"
+     inkscape:window-height="1321"
+     inkscape:window-x="20"
+     inkscape:window-y="20"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showguides="true">
+    <sodipodi:guide
+       position="-223.72917,-130.65"
+       orientation="1,0"
+       id="guide3"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-23.704167,10.827085)"
+     style="display:inline">
+    <rect
+       style="fill:#000000;stroke-width:0.22962"
+       id="rect2"
+       width="30"
+       height="5"
+       x="23.704174"
+       y="13.702083" />
+    <rect
+       style="fill:#000000;stroke-width:0.248018"
+       id="rect2-6"
+       width="35"
+       height="5"
+       x="-5.8413424"
+       y="-70.712433"
+       transform="rotate(90)" />
+    <rect
+       style="fill:#91c73e;fill-opacity:1;stroke-width:0.229621"
+       id="rect2-3"
+       width="30"
+       height="5"
+       x="23.704174"
+       y="3.1729155" />
+    <a
+       id="a3"
+       transform="matrix(0.78146322,0,0,0.96380475,11.807909,-50.00293)">
+      <rect
+         style="fill:#000000;stroke-width:0.264583"
+         id="rect2-1"
+         width="38.389523"
+         height="5.1877728"
+         x="15.223056"
+         y="76.961487" />
+    </a>
+    <a
+       id="a3-2"
+       transform="matrix(0.78146322,0,0,0.96380475,53.817211,-50.017399)">
+      <rect
+         style="fill:#000000;stroke-width:0.264583"
+         id="rect2-1-0"
+         width="38.389523"
+         height="5.1877728"
+         x="15.223056"
+         y="76.961487" />
+    </a>
+    <a
+       id="a3-2-9"
+       transform="matrix(0.78146322,0,0,0.96380475,53.807909,-71.00293)">
+      <rect
+         style="fill:#000000;stroke-width:0.264583"
+         id="rect2-1-0-2"
+         width="38.389523"
+         height="5.1877728"
+         x="15.223056"
+         y="76.961487" />
+    </a>
+  </g>
 </svg>
