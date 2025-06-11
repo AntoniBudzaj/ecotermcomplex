@@ -8,7 +8,8 @@
       "@/*": ["./src/*"],
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
-      "@images/*": ["src/assets/images/*"]
+      "@images/*": ["src/assets/images/*"],
+      "@I18n/*": ["src/I18n/*"]
     },
     "strictNullChecks": true
   }

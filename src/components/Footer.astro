@@ -1,55 +1,68 @@
 ---
+import { getLangFromUrl, useTranslations } from "@I18n/utils";
+import { navigate } from "astro:transitions/client";
+
 const today = new Date();
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type NavItem = {
+	href: string;
+	text: string;
+};
+
+const navItems: NavItem[] = [
+	{ href: `/${lang}/index`, text: "" },
+	{ href: `/${lang}/about`, text: "nav.about" },
+	{ href: `/${lang}/services`, text: "nav.services" },
+	{ href: `/${lang}/contact`, text: "nav.contact" },
+	{ href: `/${lang}/etcheck`, text: "nav.etcheck" },
+];
 ---
 
 <footer class="footer-main w-screen flex flex-col p-5 bg-gray-100">
-  <div class="container mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Company Info -->
-      <div class="flex flex-col">
-        <h3 class="text-xl font-bold mb-4">EcoTermComplex</h3>
-        <p class="text-gray-600 mb-2">Kompleksowe usługi termomodernizacyjne</p>
-        <p class="text-gray-600">
-          &copy; {today.getFullYear()} Wszelkie prawa zastrzeżone
-        </p>
-      </div>
+	<div class="container mx-auto">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<!-- Company Info -->
+			<div class="flex flex-col">
+				<h3 class="text-xl font-bold mb-4">EcoTermComplex</h3>
+				<p class="text-gray-600 mb-2">{t('services.thermal')}</p>
+				<p class="text-gray-600">
+					&copy; {today.getFullYear()} {t('footer.rights')}
+				</p>
+			</div>
 
-      <!-- Quick Links -->
-      <div class="flex flex-col">
-        <h3 class="text-xl font-bold mb-4">Szybkie linki</h3>
-        <nav class="flex flex-col gap-2">
-          <a href="/about" class="text-gray-600 hover:text-gray-900">O nas</a>
-          <a href="/services" class="text-gray-600 hover:text-gray-900"
-            >Nasze usługi</a
-          >
-          <a href="/news" class="text-gray-600 hover:text-gray-900"
-            >Aktualności</a
-          >
-          <a href="/contact" class="text-gray-600 hover:text-gray-900"
-            >Kontakt</a
-          >
-          <a href="/etcheck" class="text-gray-600 hover:text-gray-900"
-            >ETCheck</a
-          >
-        </nav>
-      </div>
+			<!-- Quick Links -->
+			<div class="flex flex-col">
+				<h3 class="text-xl font-bold mb-4">{t('footer.quicknav')}</h3>
+				<nav class="flex flex-col gap-2">
+					{
+						navItems.map((item) => (
+							<a href=`${item.href}` class="text-gray-600 hover:text-gray-900">
+								{t(item.text)}
+							</a>
+						))
+					}
+				</nav>
+			</div>
 
-      <!-- Contact Info -->
-      <div class="flex flex-col">
-        <h3 class="text-xl font-bold mb-4">Kontakt</h3>
-        <div class="flex flex-col gap-2 text-gray-600">
-          <p>Email: biuro@ecotermcomplex.pl</p>
-          <p>Telefon: +48 695 850 296</p>
-          <p>Adres: ul. Ozimina 18a,61-664 Poznań</p>
-          <p>NIP: 7831764146</p>
-        </div>
-      </div>
-    </div>
-  </div>
+			<!-- Contact Info -->
+			<div class="flex flex-col">
+				<h3 class="text-xl font-bold mb-4">{t('footer.contact')}</h3>
+				<div class="flex flex-col gap-2 text-gray-600">
+					<p>{t('footer.email')}: biuro@ecotermcomplex.pl</p>
+					<p>{t('footer.phone')}: +48 695 850 296</p>
+					<p>{t('footer.address')}: ul. Ozimina 18a,61-664 Poznań</p>
+					<p>NIP: 7831764146</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </footer>
 
 <style>
-  .footer-main {
-    border-top: 1px solid #e5e7eb;
-  }
+	.footer-main {
+		border-top: 1px solid #e5e7eb;
+	}
 </style>

@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import Background from "@images/background.jpg";
 ---
 
-<meta charset="utf-8" content="0;url=/pl/" />
+<meta charset="utf-8" />
 
 <BaseLayout>
   <!-- Hero Section -->
@@ -16,7 +16,6 @@ import Background from "@images/background.jpg";
       class="text-white flex flex-col text-left justify-center content-center w-[50vw] h-full px-12"
     >
       <h1 class="text-5xl font-bold mb-6">Przekształcamy Odpady w Energię</h1>
-      <p class="text-xl mb-8">Nasza firma zajmuje się</p>
       <div class="flex gap-4 font-bold">
         <a
           href="/services"

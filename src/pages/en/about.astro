@@ -1,0 +1,110 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import ConstructionImage from "@images/construction.jpeg";
+import Background from "@images/background.jpg";
+import Header from "@components/Header.astro";
+---
+
+<meta charset="utf-8" />
+
+<BaseLayout>
+  <!-- Hero Section -->
+  <section class="py-20 w-full bg-blend-overlay flex bg-etc-600">
+    <div
+      class="text-white flex-1/2 flex flex-col text-left justify-center content-center w-[40vw] h-full px-12"
+    >
+      <h1 class="text-5xl font-bold mb-6">About Us</h1>
+      <p class="text-xl mb-8">
+        We are a Poznań-based company specializing in consulting and advisory
+        services for the biogas and biomethane industry. We provide
+        comprehensive support services at every stage of investment - from
+        planning and design to optimization of existing installations.
+      </p>
+    </div>
+    <div class="relative flex-1/2 w-full h-full">
+      <Image
+        src={ConstructionImage}
+        alt="Construction site"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+    </div>
+  </section>
+  <!-- About Content -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 mt-12 text-etc-dark">Our Team</h2>
+        <p class="text-lg text-gray-700 mb-6">
+          Our team consists of specialists with years of experience in project
+          implementation from both the contractor and investor perspectives.
+          Additionally, we utilize our engineering and scientific education to
+          conduct research work and possess extensive technical knowledge in
+          HVAC installations and energy-efficient (nZEB) and passive building
+          construction.
+        </p>
+
+        <h2 class="text-3xl font-bold mb-8 mt-12 text-etc-dark">Our Mission</h2>
+        <p class="text-lg text-gray-700 mb-6">
+          What sets us apart in the market is our highly individual approach to
+          each client and their needs. Our mission is to support the energy
+          transition through the implementation of sustainable biogas solutions.
+          We believe that every company can contribute to environmental
+          protection while optimizing their operational costs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-20 bg-etc-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-etc-dark">
+        Our Values
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">
+            Environmental Responsibility
+          </h3>
+          <p class="text-gray-600">
+            We operate in accordance with sustainable development principles and
+            care for environmental protection
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">Innovation</h3>
+          <p class="text-gray-600">
+            We strive to continuously improve our solutions and services to meet
+            client requirements and changing market trends.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">Passion</h3>
+          <p class="text-gray-600">
+            We are committed to our work and passionate about designing
+            biomethane installations and energy-efficient solutions.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">Collaboration</h3>
+          <p class="text-gray-600">
+            We aim to build long-term relationships based on mutual trust and
+            benefits.
+          </p>
+        </div>
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">Openness</h3>
+          <p class="text-gray-600">
+            We are open to new ideas and suggestions to continuously improve our
+            solutions and services
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

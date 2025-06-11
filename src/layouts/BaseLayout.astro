@@ -1,25 +1,29 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 import Header from "../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Footer from "../components/Footer.astro";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+
+const { title } = Astro.props;
+const currentLang = Astro.url.pathname.split("/")[1] || "pl";
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang={currentLang}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
   </head>
   <body>
-    <Header />
-    <article>
-      <!-- your content is injected here -->
+    <Header>
+      <LanguageSwitcher currentLang={currentLang} />
+    </Header>
+    <main>
       <slot />
-      <!-- your content is injected here -->
-    </article>
+    </main>
     <Footer />
-  </body><style>
-    /* global style goes here!!! */
-  </style>
+  </body>
 </html>

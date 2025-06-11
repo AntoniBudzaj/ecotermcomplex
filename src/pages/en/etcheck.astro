@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import UE from "@images/ue.jpg";
+---
+
+<BaseLayout>
+  <!-- Hero Section -->
+  <section class="py-20 w-full bg-etc-600 bg-blend-overlay">
+    <div
+      class="text-white flex flex-col text-left justify-center content-center w-[50vw] h-full px-12"
+    >
+      <h1 class="text-5xl font-bold mb-6">ETCheck</h1>
+      <p class="text-xl mb-8">Energy optimization of buildings</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-etc-dark">
+          ETCheck - Energy optimization of buildings
+        </h2>
+        <p class="text-lg text-gray-700 mb-6">
+          ECOTERM COMPLEX LIMITED LIABILITY COMPANY is implementing a project
+          co-financed by European Funds "ETCheck - comprehensive optimization
+          and service for buildings using a system for monitoring characteristic
+          parameters, energy demand, data analysis, and user behavior." The
+          project aims to build ECOTERM's competitive position by developing and
+          preparing its own technology enabling the implementation of a new,
+          comprehensive ETCheck service intended for investors and operators of
+          public utility buildings.
+        </p>
+        <p>
+          <strong>EU Project Co-financing:</strong> 1,712,289.33 PLN
+        </p>
+        <div class="py-24">
+          <Image src={UE} alt="EU_co-financing" id="UE__etcheck" class="w-96" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="py-30"></div>
+</BaseLayout>

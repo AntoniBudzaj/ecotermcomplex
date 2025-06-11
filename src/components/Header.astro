@@ -1,25 +1,56 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
-import logo from "/public/ETC-logo.svg";
-import { Image } from "astro:assets";
+import Image from "astro/components/Image.astro";
+import ETCLogo from "@images/ETC-logo.svg";
+import { getLangFromUrl, useTranslations } from "@I18n/utils";
+import { navigate } from "astro:transitions/client";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type NavItem = {
+  href: string;
+  text: string;
+};
+
+const navItems: NavItem[] = [
+  { href: `/${lang}/index`, text: "" },
+  { href: `/${lang}/about`, text: "nav.about" },
+  { href: `/${lang}/services`, text: "nav.services" },
+  { href: `/${lang}/contact`, text: "nav.contact" },
+  { href: `/${lang}/etcheck`, text: "nav.etcheck" },
+];
+
+console.log(navItems);
 ---
 
-<header id="header-main" class="header-main w-screen flex justify-between p-5">
-  <div class="">
-    <a href="/" class="logo-btn w-32 block">
-      <Image id="nav-logo-img" src={logo} alt="ETC logo" />
-    </a>
-  </div>
-  <nav
-    id="
-        header-nav"
-    class="flex justify-between gap-24 w-fit px-10 items-center"
-  >
-    <a href="/about/" class="nav-btn">O nas</a>
-    <a href="/services/" class="nav-btn">Nasze usługi</a>
-    <!--  <a href="/news/" class="nav-btn">Aktualności</a>-->
-    <a href="/contact/" class="nav-btn">Kontakt</a>
-    <a href="/etcheck/" class="nav-btn">ETCheck</a>
+<header class="bg-white shadow-md">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <a href=`/${lang}/`>
+        <Image
+          src={ETCLogo}
+          alt="Ecotermcomplex"
+          id="etc-logo__header"
+          class="w-32"
+        />
+      </a>
+      <div class="flex items-center gap-8">
+        <ul class="flex gap-6">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-gray-600 hover:text-etc-500 transition-colors"
+                >
+                  {t(item.text)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <slot />
+      </div>
+    </div>
   </nav>
 </header>

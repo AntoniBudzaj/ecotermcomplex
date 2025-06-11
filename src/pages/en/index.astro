@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import Background from "@images/background.jpg";
 ---
 
-<meta charset="utf-8" content="0;url=/pl/" />
+<meta charset="utf-8" />
 
 <BaseLayout>
   <!-- Hero Section -->
@@ -15,20 +15,19 @@ import Background from "@images/background.jpg";
     <div
       class="text-white flex flex-col text-left justify-center content-center w-[50vw] h-full px-12"
     >
-      <h1 class="text-5xl font-bold mb-6">Przekształcamy Odpady w Energię</h1>
-      <p class="text-xl mb-8">Nasza firma zajmuje się</p>
+      <h1 class="text-5xl font-bold mb-6">Transforming Waste into Energy</h1>
       <div class="flex gap-4 font-bold">
         <a
-          href="/services"
+          href="/en/services"
           class="bg-etc-500 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
         >
-          Nasze Usługi
+          Our Services
         </a>
         <a
-          href="/contact"
+          href="/en/contact"
           class="border-2 border-etc-500 text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
         >
-          Kontakt
+          Contact
         </a>
       </div>
     </div>
@@ -38,7 +37,7 @@ import Background from "@images/background.jpg";
   <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12 bg-etc-500 text-white">
-        Kompleksowe Rozwiązania Biogazowe
+        Comprehensive Biogas Solutions
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white p-8 rounded-lg shadow-lg">
@@ -60,12 +59,11 @@ import Background from "@images/background.jpg";
             </svg>
           </div>
           <h3 class="text-xl font-bold mb-4 text-etc-dark">
-            Studia Wykonalności
+            Feasibility Studies
           </h3>
           <p class="text-gray-600">
-            Kompleksowa analiza strumieni odpadów i potencjału energetycznego,
-            pomagająca w podejmowaniu świadomych decyzji dotyczących wdrożenia
-            biogazu.
+            Comprehensive analysis of waste streams and energy potential,
+            helping make informed decisions about biogas implementation.
           </p>
         </div>
 
@@ -87,11 +85,12 @@ import Background from "@images/background.jpg";
               ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-etc-dark">Rozwój Projektu</h3>
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">
+            Project Development
+          </h3>
           <p class="text-gray-600">
-            Kompleksowe zarządzanie projektem od projektu do wdrożenia,
-            zapewniające spełnienie wszystkich wymogów regulacyjnych przez
-            instalację biogazową.
+            Comprehensive project management from design to implementation,
+            ensuring the biogas installation meets all regulatory requirements.
           </p>
         </div>
 
@@ -112,10 +111,10 @@ import Background from "@images/background.jpg";
                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-etc-dark">Optymalizacja</h3>
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">Optimization</h3>
           <p class="text-gray-600">
-            Maksymalizuj efektywność produkcji biogazu dzięki naszym usługom
-            optymalizacyjnym i stałemu wsparciu technicznemu.
+            Maximize biogas production efficiency with our optimization services
+            and ongoing technical support.
           </p>
         </div>
       </div>
@@ -126,7 +125,7 @@ import Background from "@images/background.jpg";
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12 text-etc-500">
-        Dlaczego Warto Wybrać Naszą Firmę
+        Why Choose Our Company
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div class="flex gap-6">
@@ -150,11 +149,11 @@ import Background from "@images/background.jpg";
           </div>
           <div>
             <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
-              Doświadczenie w Branży
+              Industry Experience
             </h3>
             <p class="text-gray-600">
-              Ponad 5 lat doświadczenia w rozwoju i wdrażaniu projektów
-              biogazowych w różnych branżach.
+              Over 5 years of experience in developing and implementing biogas
+              projects across various industries.
             </p>
           </div>
         </div>
@@ -181,11 +180,11 @@ import Background from "@images/background.jpg";
           </div>
           <div>
             <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
-              Certyfikowani Eksperci
+              Certified Experts
             </h3>
             <p class="text-gray-600">
-              Nasz zespół składa się z certyfikowanych inżynierów i specjalistów
-              ds. środowiska z głęboką wiedzą w zakresie technologii biogazu.
+              Our team consists of certified engineers and environmental
+              specialists with deep knowledge in biogas technology.
             </p>
           </div>
         </div>
@@ -212,11 +211,11 @@ import Background from "@images/background.jpg";
           </div>
           <div>
             <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
-              Indywidualne podejście
+              Individual Approach
             </h3>
             <p class="text-gray-600">
-              Analizujemy Twój przypadek od podstaw, biorąc pod uwagę lokalne
-              uwarunkowania i cele biznesowe
+              We analyze your case from the ground up, taking into account local
+              conditions and business goals
             </p>
           </div>
         </div>
@@ -242,11 +241,11 @@ import Background from "@images/background.jpg";
           </div>
           <div>
             <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
-              Szybkie Wdrożenie
+              Quick Implementation
             </h3>
             <p class="text-gray-600">
-              Usprawnione procesy i efektywne zarządzanie projektami, aby szybko
-              uruchomić instalację biogazową.
+              Streamlined processes and efficient project management to quickly
+              get your biogas installation up and running.
             </p>
           </div>
         </div>
@@ -258,17 +257,17 @@ import Background from "@images/background.jpg";
   <section class="py-20 bg-etc-600 text-white">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-6">
-        Gotowy na Przekształcenie Odpadów w Energię?
+        Ready to Transform Waste into Energy?
       </h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Skontaktuj się z nami już dziś, aby omówić, jak możemy pomóc w wdrożeniu
-        zrównoważonych rozwiązań biogazowych dla Twojej firmy.
+        Contact us today to discuss how we can help implement sustainable biogas
+        solutions for your business.
       </p>
       <a
-        href="/contact"
+        href="/en/contact"
         class="inline-block bg-white text-etc-dark-6 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
       >
-        Rozpocznij
+        Get Started
       </a>
     </div>
   </section>
