@@ -1,0 +1,113 @@
+---
+import { getLangFromUrl, useTranslations } from "@I18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<style>
+  input:focus {
+    outline: 4px var(--color-etc-500);
+  }
+
+  textarea:focus {
+    outline: 4px var(--color-etc-500);
+  }
+</style>
+
+<div class="bg-gray-50 p-8 rounded-lg">
+  <h2 class="text-2xl font-bold mb-6 text-etc-dark">{t("contact.title")}</h2>
+  <form
+    id="contactForm"
+    class="space-y-6 contact-form"
+    action="https://formspree.io/f/mzzgrplz"
+    method="POST"
+  >
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1"
+        >{t("contact.name")}</label
+      >
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+        required
+      />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-1"
+        >{t("contact.email")}</label
+      >
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none"
+        required
+      />
+    </div>
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-1"
+        >{t("contact.phone")}</label
+      >
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg f"
+      />
+    </div>
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 mb-1"
+        >{t("contact.message")}</label
+      >
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-etc-500 focus:border-etc-500"
+        required></textarea>
+    </div>
+    <button
+      type="submit"
+      class="w-full bg-etc-500 text-white px-6 py-3 rounded-lg hover:bg-etc-600 transition-colors"
+    >
+      {t("contact.submit")}
+    </button>
+    <h1 id="submit-message" class="hidden text-green-600 text-center mt-4">
+      {t("contact.success")}
+    </h1>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById("contactForm");
+  const submitMessage = document.getElementById("submit-message");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        (e.target as HTMLFormElement).reset();
+        submitMessage?.classList.remove("hidden");
+        setTimeout(() => {
+          submitMessage?.classList.add("hidden");
+        }, 5000);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert(t("error.message"));
+    }
+  });
+</script>
