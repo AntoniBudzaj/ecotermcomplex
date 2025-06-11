@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./nav.css";
 @import "./colors.css";
+@import "./index.css";
+@import "./about.css";
 :root {
   --accent: #2337ff;
   --accent-dark: #000d8a;

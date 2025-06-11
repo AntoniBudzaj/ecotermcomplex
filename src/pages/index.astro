@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import Background from "@images/background.jpg";
 ---
 
 <meta charset="utf-8" />
@@ -7,31 +9,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout>
   <!-- Hero Section -->
   <section
-    class="relative min-h-[80vh] bg-gradient-to-r from-etc-500 to-etc-200"
+    id="hero-section"
+    class="h-[60vh] w-full bg-black/30 bg-blend-overlay"
   >
-    <div class="absolute inset-0 bg-black/20"></div>
-    <div class="relative container mx-auto px-4 h-full flex items-center">
-      <div class="max-w-3xl text-white">
-        <h1 class="text-5xl font-bold mb-6">Transforming Waste into Energy</h1>
-        <p class="text-xl mb-8">
-          Leading biogas consulting firm specializing in sustainable energy
-          solutions, helping businesses convert organic waste into renewable
-          energy.
-        </p>
-        <div class="flex gap-4">
-          <a
-            href="/services"
-            class="bg-white px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
-          >
-            Our Services
-          </a>
-          <a
-            href="/contact"
-            class="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
-          >
-            Contact Us
-          </a>
-        </div>
+    <div
+      class="text-white flex flex-col text-left justify-center content-center w-[50vw] h-full px-12"
+    >
+      <h1 class="text-5xl font-bold mb-6">Przekształcamy Odpady w Energię</h1>
+      <p class="text-xl mb-8">Nasza firma zajmuje się</p>
+      <div class="flex gap-4 font-bold">
+        <a
+          href="/services"
+          class="bg-etc-500 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
+        >
+          Nasze Usługi
+        </a>
+        <a
+          href="/contact"
+          class="border-2 border-etc-500 text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
+        >
+          Kontakt
+        </a>
       </div>
     </div>
   </section>
@@ -39,16 +37,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <!-- Services Overview -->
   <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-green-800">
-        Comprehensive Biogas Solutions
+      <h2 class="text-3xl font-bold text-center mb-12 bg-etc-500 text-white">
+        Kompleksowe Rozwiązania Biogazowe
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white p-8 rounded-lg shadow-lg">
           <div
-            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            class="w-16 h-16 bg-etc-100 rounded-full flex items-center justify-center mb-6"
           >
             <svg
-              class="w-8 h-8 text-green-600"
+              class="w-8 h-8 text-etc-dark-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -61,21 +59,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-green-800">
-            Feasibility Studies
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">
+            Studia Wykonalności
           </h3>
           <p class="text-gray-600">
-            Comprehensive analysis of your waste streams and energy potential,
-            helping you make informed decisions about biogas implementation.
+            Kompleksowa analiza strumieni odpadów i potencjału energetycznego,
+            pomagająca w podejmowaniu świadomych decyzji dotyczących wdrożenia
+            biogazu.
           </p>
         </div>
 
         <div class="bg-white p-8 rounded-lg shadow-lg">
           <div
-            class="w-16 h-16 bg-etc-200 rounded-full flex items-center justify-center mb-6"
+            class="w-16 h-16 bg-etc-100 rounded-full flex items-center justify-center mb-6"
           >
             <svg
-              class="w-8 h-8 text-etc-dark"
+              class="w-8 h-8 text-etc-dark-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -88,21 +87,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-green-800">
-            Project Development
-          </h3>
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">Rozwój Projektu</h3>
           <p class="text-gray-600">
-            End-to-end project management from design to implementation,
-            ensuring your biogas plant meets all regulatory requirements.
+            Kompleksowe zarządzanie projektem od projektu do wdrożenia,
+            zapewniające spełnienie wszystkich wymogów regulacyjnych przez
+            instalację biogazową.
           </p>
         </div>
 
         <div class="bg-white p-8 rounded-lg shadow-lg">
           <div
-            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            class="w-16 h-16 bg-etc-100 rounded-full flex items-center justify-center mb-6"
           >
             <svg
-              class="w-8 h-8 text-green-600"
+              class="w-8 h-8 text-etc-dark-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -114,10 +112,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-4 text-green-800">Optimization</h3>
+          <h3 class="text-xl font-bold mb-4 text-etc-dark">Optymalizacja</h3>
           <p class="text-gray-600">
-            Maximize your biogas production efficiency with our expert
-            optimization services and ongoing technical support.
+            Maksymalizuj efektywność produkcji biogazu dzięki naszym usługom
+            optymalizacyjnym i stałemu wsparciu technicznemu.
           </p>
         </div>
       </div>
@@ -127,17 +125,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <!-- Why Choose Us -->
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-green-800">
-        Why Choose Our Expertise
+      <h2 class="text-3xl font-bold text-center mb-12 text-etc-500">
+        Dlaczego Warto Wybrać Naszą Firmę
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div class="flex gap-6">
           <div class="flex-shrink-0">
             <div
-              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+              class="w-12 h-12 bg-etc-100 rounded-lg flex items-center justify-center"
             >
               <svg
-                class="w-6 h-6 text-green-600"
+                class="w-6 h-6 text-etc-dark"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -151,12 +149,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
           </div>
           <div>
-            <h3 class="text-xl font-bold mb-2 text-green-800">
-              Industry Experience
+            <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
+              Doświadczenie w Branży
             </h3>
             <p class="text-gray-600">
-              Over 15 years of experience in biogas project development and
-              implementation across various industries.
+              Ponad 5 lat doświadczenia w rozwoju i wdrażaniu projektów
+              biogazowych w różnych branżach.
             </p>
           </div>
         </div>
@@ -164,10 +162,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="flex gap-6">
           <div class="flex-shrink-0">
             <div
-              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+              class="w-12 h-12 bg-etc-100 rounded-lg flex items-center justify-center"
             >
               <svg
-                class="w-6 h-6 text-green-600"
+                class="w-6 h-6 text-etc-dark"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -182,12 +180,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
           </div>
           <div>
-            <h3 class="text-xl font-bold mb-2 text-green-800">
-              Certified Experts
+            <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
+              Certyfikowani Eksperci
             </h3>
             <p class="text-gray-600">
-              Our team consists of certified engineers and environmental
-              specialists with deep expertise in biogas technology.
+              Nasz zespół składa się z certyfikowanych inżynierów i specjalistów
+              ds. środowiska z głęboką wiedzą w zakresie technologii biogazu.
             </p>
           </div>
         </div>
@@ -195,10 +193,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="flex gap-6">
           <div class="flex-shrink-0">
             <div
-              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+              class="w-12 h-12 bg-etc-100 rounded-lg flex items-center justify-center"
             >
               <svg
-                class="w-6 h-6 text-green-600"
+                class="w-6 h-6 text-etc-dark"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -213,12 +211,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
           </div>
           <div>
-            <h3 class="text-xl font-bold mb-2 text-green-800">
-              Global Network
+            <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
+              Indywidualne podejście
             </h3>
             <p class="text-gray-600">
-              Access to a worldwide network of partners and suppliers for the
-              best biogas technology solutions.
+              Analizujemy Twój przypadek od podstaw, biorąc pod uwagę lokalne
+              uwarunkowania i cele biznesowe
             </p>
           </div>
         </div>
@@ -226,10 +224,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="flex gap-6">
           <div class="flex-shrink-0">
             <div
-              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+              class="w-12 h-12 bg-etc-100 rounded-lg flex items-center justify-center"
             >
               <svg
-                class="w-6 h-6 text-green-600"
+                class="w-6 h-6 text-etc-dark"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -243,12 +241,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
           </div>
           <div>
-            <h3 class="text-xl font-bold mb-2 text-green-800">
-              Fast Implementation
+            <h3 class="text-xl font-bold mb-2 text-etc-dark-6">
+              Szybkie Wdrożenie
             </h3>
             <p class="text-gray-600">
-              Streamlined processes and efficient project management to get your
-              biogas plant up and running quickly.
+              Usprawnione procesy i efektywne zarządzanie projektami, aby szybko
+              uruchomić instalację biogazową.
             </p>
           </div>
         </div>
@@ -257,20 +255,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 bg-green-800 text-white">
+  <section class="py-20 bg-etc-600 text-white">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-6">
-        Ready to Transform Your Waste into Energy?
+        Gotowy na Przekształcenie Odpadów w Energię?
       </h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Contact us today to discuss how we can help you implement sustainable
-        biogas solutions for your business.
+        Skontaktuj się z nami już dziś, aby omówić, jak możemy pomóc w wdrożeniu
+        zrównoważonych rozwiązań biogazowych dla Twojej firmy.
       </p>
       <a
         href="/contact"
-        class="inline-block bg-white text-green-800 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
+        class="inline-block bg-white text-etc-dark-6 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
       >
-        Get Started
+        Rozpocznij
       </a>
     </div>
   </section>

@@ -1,288 +1,50 @@
-<meta charset="utf-8">
-<style>
-    .wp-block-navigation__responsive-container-open {
-        display: none !important;
-    }
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import UE from "@images/ue.jpg";
+---
 
-    .wp-block-site-logo {
-        display: none !important;
-    }
-
-    .wp-block-post-title {
-        display: none !important;
-    }
-
-    .wp-block-site-title {
-        display: none !important;
-    }
-
-    .has-text-align-right {
-        display: none !important;
-    }
-
-    .btnMenuGł {
-        font-family: Arial, Helvetica, sans-serif;
-        background: none;
-        color: black;
-        font-size: 2vw;
-        border: none;
-        padding: 3vw;
-        display: inline-block;
-    }
-
-    .btnMenuGł:hover {
-        color: #6bb30d;
-        text-decoration: underline;
-    }
-
-    .logoStrGł {
-        width: 10vw;
-        border: 0;
-    }
-
-    .textFooter {
-        font-family: Arial, Helvetica, sans-serif;
-        line-height: 1.7w;
-        font-size: 1.2vw;
-
-    }
-
-    .textETCheck {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1vw;
-    }
-
-    .rowTextBudynki {
-        display: flex;
-        align-items: center;
-    }
-
-    .columnText {
-        display: flex;
-        flex: 60vw;
-    }
-
-    .columnBudynki {
-        display: flex;
-        flex: 40vw;
-    }
-
-    @media (max-width: 1000px) {
-        .rowTextBudynki {
-            flex-direction: column;
-            font-size: 16px !important;
-        }
-
-        .titleETCheck {
-            display: inline !important;
-            text-align: center;
-            font-size: 15px !important;
-        }
-
-        .textETCheck {
-            font-size: 18px;
-        }
-
-        .titleETCheckPc {
-            display: none;
-        }
-
-        .ueETCheck {
-            font-size: 10px;
-        }
-
-        .googleMapFooter {
-            height: 20% !important;
-        }
-    }
-</style>
-
-<body background="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Home-5@7x-1-e1694991585261.png"
-    style="background-repeat: no-repeat; line-height: 1 !important;">
-
-    <header>
-        <div style=" display: flex; position: sticky;">
-            <button class="btnLogoStrGł" onclick="redirectStrGł()" style="background: none;
-            border: none; flex: 10vw;">
-                <img class="logoStrGł" src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Logo-1.png" />
-            </button>
-
-
-            <div class="rowMenuGł" style="flex: 90vw; text-align: right;">
-
-                <button class="btnMenuGł btnOnas" onclick="redirectOnas()">O nas</button>
-                <button class="btnMenuGł btnCorobimy" onclick="redirectCoRobimy()">Co robimy</button>
-                <button class="btnMenuGł btnAktualności" onclick="redirectAktualności()">Aktualności</button>
-                <button class="btnMenuGł btnKontakt" onclick="redirectKontakt()">Kontakt</button>
-                <button class="btnMenuGł btnETCheck" onclick="redirectETCheck()">ETCheck</button>
-
-            </div>
-        </div>
-    </header>
-
-    <div class="titleETCheck textETCheck" style="padding-top: 3vw; padding-bottom: 3vw; display: none; ">
-        Optymalizacja energetyczna
-        budynków <color style="color:#6bb30d">ETCheck
-        </color><br><br>
+<BaseLayout>
+  <!-- Hero Section -->
+  <section class="py-20 w-full bg-etc-600 bg-blend-overlay">
+    <div
+      class="text-white flex flex-col text-left justify-center content-center w-[50vw] h-full px-12"
+    >
+      <h1 class="text-5xl font-bold mb-6">ETCheck</h1>
+      <p class="text-xl mb-8">Optymalizacja energetyczna budynków</p>
     </div>
+  </section>
 
-    <div class="rowTextBudynki" style="padding-left: 3vw; padding-right: 3vw;">
-
-        <div class="columnBudynki">
-
-
-            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Home-20@7x-1-e1695162106714.png"
-                alt="Budynki" width="80%">
+  <!-- Main Content -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-etc-dark">
+          ETCheck - Optymalizacja energetyczna budynków
+        </h2>
+        <p class="text-lg text-gray-700 mb-6">
+          ECOTERM COMPLEX SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ realizuje
+          projekt dofinansowany z Funduszy Europejskich „ETCheck – kompleksowa
+          usługa optymalizacyjna i serwisowa dla budynków z wykorzystaniem
+          systemu monitoringu charakterystycznych parametrów, zapotrzebowania
+          energii, analizy danych i zachowań użytkowników”. Celem projektu jest
+          budowa pozycji konkurencyjnej przedsiębiorstwa ECOTERM poprzez
+          opracowanie i przygotowanie własnej technologii umożliwiającej
+          wdrożenie nowej, kompleksowej usługi ETCheck przeznaczonej dla
+          inwestorów i operatorów budynków użyteczności publicznej.
+        </p>
+        <p>
+          <strong>Dofinansowanie projektu z UE:</strong> 1 712 289,33 PL
+        </p>
+        <div class="py-24">
+          <Image
+            src={UE}
+            alt="UE_dofinansowanie"
+            id="UE__etcheck"
+            class="w-96"
+          />
         </div>
-
-        <div class="columnText">
-
-            <div class="textETCheck">
-                <!--<div class="titleETCheckPc">Optymalizacja energetyczna budynków <color style="color:#6bb30d">ETCheck
-                    </color><br><br></div>
-
-
-                Wychodząc naprzeciw potrzebom naszych klientów, stworzyliśmy
-                nową usługę regulacji istniejących obiektów celem obniżenia
-                zużycia energii i poprawy komfortu - <color style="color: #6bb30d;">ETCheck</color>. Dane
-                generowane
-                przez budynek niosą ze sobą dużo ciekawych informacji. Poprzez
-                ich analizę i wywiad z użytkownikami, możliwa jest regulacja
-                instalacji budynku. Nasza usługa zwraca się w 1,5 roku, nie niesie
-                za sobą kosztów inwestycyjnych i ingerencji w istniejące systemy
-                budynku. Inwestor ma stały wgląd w proces optymalizacji
-                energatycznej.
-                <br> <br>
-                <ol style="line-height: 40px;">
-                    <li>
-                        Wykonanie nastaw systemów budynkowych
-                        <br>
-                    </li>
-                    <li>
-                        Bieżące monitorowanie parametrów budynku<br>
-                    </li>
-                    <li>
-                        Obniżenie kosztów eksploatacyjnych o 20%<br>
-                    </li>
-                    <li>
-                        Zmniejszenie emisji CO2<br>
-                    </li>
-                    <li>
-                        Poprawa zadowolenia użytkowników
-                    </li>
-                </ol>-->
-                <div class="ueETCheck textETCheck" style="color: rgb(0, 0, 0); font-size: 24px;">ECOTERM COMPLEX
-                    SPÓŁKA Z
-                    OGRANICZONĄ
-                    ODPOWIEDZIALNOŚCIĄ
-                    realizuje projekt
-                    dofinansowany z
-                    Funduszy Europejskich
-                    „ETCheck – kompleksowa usługa optymalizacyjna i serwisowa dla budynków z wykorzystaniem systemu
-                    monitoringu
-                    charakterystycznych parametrów, zapotrzebowania energii, analizy danych i zachowań
-                    użytkowników”.</strong></h5>
-                    Celem projektu jest budowa pozycji konkurencyjnej przedsiębiorstwa ECOTERM poprzez opracowanie i
-                    przygotowanie
-                    własnej technologii umożliwiającej wdrożenie nowej, kompleksowej usługi ETCheck przeznaczonej dla
-                    inwestorów i
-                    operatorów budynków użyteczności publicznej.
-
-                    <strong>Dofinansowanie projektu z UE:</strong> 1 712 289,33 PL
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <div class="bottomEUImage" style="text-align: right; padding-right: 5vw;">
-        <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/11/logo_UE_FE.jpg" width="20%">
-    </div>
-
-
-
-    <footer style="padding-top: 10vw;">
-        <hr color="#9fdd4d" width="100%" style="padding-left: none!important;">
-
-        <div style="display: flex;">
-            <div class="googleMapFooter" style=" flex:50vw; padding-bottom: 1vw; ">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.891691416013!2d16.923419612598494!3d52.42676014301164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b546f6711a7%3A0x2dae340e96dd3d34!2sOzimina%2018A%2C%2061-664%20Pozna%C5%84!5e0!3m2!1spl!2spl!4v1693133991318!5m2!1spl!2spl"
-                    width="100%" height="100%" frameborder="0" style="border:50" allowfullscreen></iframe>
-
-            </div>
-
-            <div class="adressFooter textFooter" style="flex:20vw;padding-left: 1vw;">
-                <p>
-                    <color style="color: #6bb30d;">Dane adresowe</color>
-                    <br><br>
-                    Ecotermcomplex Sp. z o.o<br>Ul: Ozimina 18a<br>61-664-Poznań
-                </p>
-
-            </div>
-            <div class="compnayInfoFooter textFooter" style="flex:30vw;">
-                <p>
-                    Ecotermcomplex Sp. z o.o.<br>
-                    tel. kom. +48 695 850 296<br>
-                    mail: biuro@ecotermcomplex.pl<br>
-                    NIP: 7831764146<br>
-                    REGON: 368207463<br>
-                    Nr konta: 31 1140 2004 0000 3602 7748 9545<br>
-                </p>
-                <div class=" row2 rowBottomGł" style="text-align: right; display: flex; ">
-                    <div class="colImgFooter">
-                        <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/11/logo_UE_FE.jpg" width="100%">
-                    </div>
-                    <div class="colImgFooter">
-                        <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/LOGO_ECOTERM_COMPLEX.3213.png"
-                            alt="logo" width="80%">
-                    </div>
-
-
-                </div>
-            </div>
-
-        </div>
-    </footer>
-
-
-
-</body>
-
-
-<script>
-    let urlOnas = "https://ecotermcomplex.pl/?page_id=2383";
-    let urlStrGł = "https://ecotermcomplex.pl";
-    let urlCoRobimy = "https://ecotermcomplex.pl/?page_id=1949";
-    let urlAktualności = "https://ecotermcomplex.pl/?page_id=2445";
-    let urlKontakt = "https://ecotermcomplex.pl/?page_id=2034";
-    let urlETCheck = "https://ecotermcomplex.pl/?page_id=2172";
-
-    window.addEventListener("click", (event) => {
-        let xperc = event.offsetX / screen.width * 100;
-        let yperc = event.offsetY / screen.width * 100;
-
-        console.log("left: " + xperc.toFixed(2), ", down: " + yperc.toFixed(2));
-    });
-
-    function redirectStrGł() {
-        window.location.href = urlStrGł;
-
-    }
-    function redirectOnas() {
-        window.location.href = urlOnas;
-    }
-
-    function redirectCoRobimy() {
-        window.location.href = urlCoRobimy;
-    }
-    function redirectAktualności() {
-        window.location.href = urlAktualności;
-    }
-    function redirectKontakt() {
-        window.location.href = urlKontakt;
-    }
-    function redirectETCheck() {
-        window.location.href = urlETCheck;
-    }
-</script>
-</meta>
+  </section></BaseLayout
+>

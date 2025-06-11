@@ -1,319 +1,173 @@
-<meta charset="utf-8">
-<style>
-    .wp-block-navigation__responsive-container-open {
-        display: none !important;
-    }
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import Background from "@images/background.jpg";
+---
 
-    .wp-block-site-logo {
-        display: none !important;
-    }
+<BaseLayout>
+  <!-- Hero Section -->
+  <section class="h-fit py-32 w-full bg-etc-600 bg-blend-overlay">
+    <div
+      class="text-white flex flex-col justify-center content-center h-full px-12 mx-[30vw] text-center"
+    >
+      <h1 class="text-5xl font-bold mb-6">Nasze Usługi</h1>
+      <p class="text-xl mb-8">
+        Specjalizujemy się w kompleksowym doradztwie i consulting dla branży
+        biogazowej oraz biometanowej, oferując wsparcie na każdym etapie
+        realizacji projektów. Nasze usługi obejmują:
+      </p>
+    </div>
+  </section>
 
-    .wp-block-post-title {
-        display: none !important;
-    }
+  <!-- Main Services -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-etc-dark">
+        Główne Usługi
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <h3 class="text-2xl font-bold mb-4 text-etc-dark">
+            Studia Wykonalności
+          </h3>
+          <p class="text-gray-700 mb-4">
+            Oferujemy kompleksowe analizy wykonalności projektów biogazowych, w
+            tym:
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Analiza potencjału surowcowego</li>
+            <li>Ocena techniczna i ekonomiczna</li>
+            <li>Analiza rynku i możliwości sprzedaży</li>
+            <li>Planowanie inwestycji</li>
+          </ul>
+        </div>
 
-    .wp-block-site-title {
-        display: none !important;
-    }
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <h3 class="text-2xl font-bold mb-4 text-etc-dark">
+            Projektowanie i Budowa
+          </h3>
+          <p class="text-gray-700 mb-4">
+            Zapewniamy kompleksową obsługę projektową i wykonawczą:
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Projektowanie instalacji biogazowych</li>
+            <li>Nadzór nad budową</li>
+            <li>Integracja z istniejącymi systemami</li>
+          </ul>
+        </div>
 
-    .has-text-align-right {
-        display: none !important;
-    }
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <h3 class="text-2xl font-bold mb-4 text-etc-dark">
+            Optymalizacja i Serwis
+          </h3>
+          <p class="text-gray-700 mb-4">
+            Oferujemy usługi wspierające efektywną eksploatację:
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Optymalizacja procesów</li>
+            <li>Serwis i konserwacja</li>
+            <li>Monitoring i diagnostyka</li>
+          </ul>
+        </div>
 
-    .btnMenuGł {
-        font-family: Arial, Helvetica, sans-serif;
-        background: none;
-        color: black;
-        font-size: 2vw;
-        border: none;
-        padding: 3vw;
-        display: inline-block;
-    }
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <h3 class="text-2xl font-bold mb-4 text-etc-dark">
+            Doradztwo i Szkolenia
+          </h3>
+          <p class="text-gray-700 mb-4">
+            Wspieramy rozwój kompetencji w zakresie biogazu:
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Doradztwo prawne i środowiskowe</li>
+            <li>Analiza opłacalności</li>
+            <li>Wsparcie w pozyskiwaniu dofinansowania</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
-    .btnMenuGł:hover {
-        color: #6bb30d;
-        text-decoration: underline;
-    }
-
-    .logoStrGł {
-        width: 10vw;
-
-        border: 0;
-    }
-
-    .textFooter {
-        font-family: Arial, Helvetica, sans-serif;
-        line-height: 1.7w;
-        font-size: 1.2vw;
-
-    }
-
-    .rowImgs {
-        display: flex;
-        padding: 8vw;
-
-    }
-
-    .column {
-        flex: 33.33%;
-    }
-
-    .btnDowiedzSięWięcej {
-        position: relative;
-        top: 15%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        background: rgb(231, 231, 231);
-        color: black;
-        font-size: 1vw;
-        padding: 10vw, 20vw;
-        border-radius: 30px;
-        cursor: pointer;
-        size: 1px;
-        text-align: center;
-        border: #9fdd4d;
-    }
-
-    .btnDowiedzSięWięcej:hover {
-        background-color: #9fdd4d
-    }
-
-    .ecoNames {
-        font-family: Arial, Helvetica, sans-serif;
-        position: relative;
-        text-align: center;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        font-size: 2vw;
-        font-style: italic;
-    }
-
-    h4 {
-        font-size: 3vw;
-        font-family: Arial, Helvetica, sans-serif;
-        font-style: italic;
-    }
-
-    .rowEcoTerm {
-        display: flex;
-        padding: 8vw;
-    }
-
-    .columnEcoTerm {
-        flex: 50vw;
-    }
-</style>
-
-<body background="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Home-5@7x-1-e1694991585261.png"
-    style="background-repeat: no-repeat; line-height: 1 !important;">
-
-   <header>
-            <div style=" display: flex; position: sticky;">
-                <button class="btnLogoStrGł" onclick="redirectStrGł()" style="background: none;
-            border: none; flex: 10vw;">
-                    <img class="logoStrGł" src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/Logo-1.png" />
-                </button>
-
-
-                <div class="rowMenuGł" style="flex: 90vw; text-align: right;">
-
-                    <button class="btnMenuGł btnOnas" onclick="redirectOnas()">O nas</button>
-                    <button class="btnMenuGł btnCorobimy" onclick="redirectCoRobimy()">Co robimy</button>
-                    <button class="btnMenuGł btnAktualności" onclick="redirectAktualności()">Aktualności</button>
-                    <button class="btnMenuGł btnKontakt" onclick="redirectKontakt()">Kontakt</button>
-                    <button class="btnMenuGł btnETCheck" onclick="redirectETCheck()">ETCheck</button>
-
-                </div>
+  <!-- Process Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-etc-dark">
+        Nasz Proces
+      </h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          <div class="flex gap-6">
+            <div class="flex-shrink-0">
+              <div
+                class="w-12 h-12 bg-etc-500 rounded-full flex items-center justify-center text-white font-bold"
+              >
+                1
+              </div>
             </div>
-        </header>
-
-    <div style="color:#6bb30d; font-size: 4vw; font-family: Arial, Helvetica, sans-serif; text-align: center; padding-top:3vw; ">
-        Czym się zajmujemy?
-    </div>
-    <div class="rowImgs">
-        <div class="column">
-
-            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/budynki-1.png" alt="buildingsCoRobimy"
-                style="width: 100%;">
-            <h1 class="ecoNames" style="top:14%; color:lightblue">
-                EcoTerm
-            </h1>
-            <button class="btnDowiedzSięWięcej" onclick="scrollLowerEcoTerm()"><b>Dowiedz się
-                    więcej</b></button>
-        </div>
-        <div class="column">
-            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/dom-robotnicy.png" alt="constructionCoRobimy"
-                style="width: 100%;">
-            <h2 class="ecoNames" style="top:16%; color:gray">
-                EcoConstruct
-            </h2>
-            <button class="btnDowiedzSięWięcej" onclick="scrollLowerEcoConstruct()" style="top:16%;"><b>Dowiedz się
-                    więcej</b></button>
-        </div>
-        <div class="column">
-            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/silosy.png" alt="silosCoRobimy"
-                style="width: 100%;">
-            <h3 class="ecoNames" style="top:15%; color:darkolivegreen">
-                EcoMetan
-            </h3>
-            <button class="btnDowiedzSięWięcej" onclick="scrollLowerEcoMetan()" style="top:13%;"><b>Dowiedz się
-                    więcej</b></button>
-        </div>
-    </div>
-
-    <div class="rowEcoTerm">
-
-        <div class="columnEcoTerm">
-            <h4 style="color:lightblue">
-                EcoTerm
-            </h4>
-
-            <ul id="listNr1" style="font-size: 2vw; font-family: Arial, Helvetica, sans-serif; line-height: 3vw;">
-
-                <li>Optymalizacja energetyczna</li>
-                <li>Charakterystyki energetyczne</li>
-                <li>Audyty</li>
-                <li>Optymalizacja energetyczna budynków <color style="color: #6bb30d;"><b>ETCheck</b></color>
-                </li>
-            </ul>
-        </div>
-        <div class="columnEcoTerm">
-            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/budynki-i-drzewa.png" alt="" width="100%">
-        </div>
-    </div>
-
-    <div class="rowEcoTerm">
-        <div class="columnEcoTerm">
-            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/dom-robotnicy.png" alt="" width="100%">
-        </div>
-        <div class="columnEcoTerm">
-            <h4 style="color:darkgrey">
-                EcoConstruct
-            </h4>
-
-            <ul id="listNr2" style="font-size: 2vw; font-family: Arial, Helvetica, sans-serif; line-height: 3vw;">
-
-                <li>Realizacja i nadzór inwestycji przyjaznych środowisk</li>
-
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="rowEcoTerm">
-
-        <div class="columnEcoTerm">
-            <h4 style="color:darkolivegreen">
-                EcoMetan
-            </h4>
-
-            <ul id="listNr3" style="font-size: 2vw; font-family: Arial, Helvetica, sans-serif; line-height: 3vw;">
-
-                <li>Projektowanie i rozwój instalacji zrównoważonych<br>
-                    energetyczie i biopaliw
-                </li>
-
-            </ul>
-
-        </div>
-        <div class="columnEcoTerm">
-            <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/silosy.png" alt="" width="100%">
-        </div>
-    </div>
-
-
-    <footer style="padding-top: 10vw;">
-        <hr color="#9fdd4d" width="100%" style="padding-left: none!important;">
-
-        <div style="display: flex;">
-            <div style=" flex:50vw; ">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.891691416013!2d16.923419612598494!3d52.42676014301164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b546f6711a7%3A0x2dae340e96dd3d34!2sOzimina%2018A%2C%2061-664%20Pozna%C5%84!5e0!3m2!1spl!2spl!4v1693133991318!5m2!1spl!2spl"
-                    width="100%" height="80%" frameborder="0" style="border:50" allowfullscreen></iframe>
-
+            <div>
+              <h3 class="text-xl font-bold mb-2 text-etc-dark">
+                Analiza i Planowanie
+              </h3>
+              <p class="text-gray-700">
+                Dokładna analiza potrzeb i możliwości, opracowanie koncepcji i
+                harmonogramu realizacji.
+              </p>
             </div>
+          </div>
 
-            <div class="adressFooter textFooter" style="flex:20vw;padding-left: 1vw;">
-                <p>
-                    <color style="color: #6bb30d;">Dane adresowe</color>
-                    <br><br>
-                    Ecotermcomplex Sp. z o.o<br>Ul: Ozimina 18a<br>61-664-Poznań
-                </p>
+          <div class="flex gap-6">
+            <div class="flex-shrink-0">
+              <div
+                class="w-12 h-12 bg-etc-500 rounded-full flex items-center justify-center text-white font-bold"
+              >
+                2
+              </div>
             </div>
-            <div class="compnayInfoFooter textFooter" style="flex:30vw;">
-                <p>
-                    Ecotermcomplex Sp. z o.o.<br>
-                    tel. kom. +48 695 850 296<br>
-                    mail: biuro@ecotermcomplex.pl<br>
-                    NIP: 7831764146<br>
-                    REGON: 368207463<br>
-                    Nr konta: 65 1140 2004 0000 3602 7896 9347<br>
-                </p>
-                <div class=" row2 rowBottomGł" style="text-align: right; ">
-                    <img src="https://ecotermcomplex.pl/wp-content/uploads/2023/09/LOGO_ECOTERM_COMPLEX.3213.png"
-                        alt="logo" width="60%">
-                </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2 text-etc-dark">
+                Projektowanie
+              </h3>
+              <p class="text-gray-700">
+                Opracowanie szczegółowej dokumentacji technicznej i uzyskanie
+                niezbędnych pozwoleń.
+              </p>
             </div>
+          </div>
 
+          <div class="flex gap-6">
+            <div class="flex-shrink-0">
+              <div
+                class="w-12 h-12 bg-etc-500 rounded-full flex items-center justify-center text-white font-bold"
+              >
+                3
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2 text-etc-dark">Realizacja</h3>
+              <p class="text-gray-700">
+                Kompleksowa realizacja projektu z zachowaniem najwyższych
+                standardów jakości i bezpieczeństwa.
+              </p>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-
-</body>
-
-
-<script>
-    Element.scrollIntoView
-
-    let urlOnas = "https://ecotermcomplex.pl/?page_id=2383";
-    let urlStrGł = "https://ecotermcomplex.pl";
-    let urlCoRobimy = "https://ecotermcomplex.pl/?page_id=1949";
-    let urlAktualności = "https://ecotermcomplex.pl/?page_id=2445";
-    let urlKontakt = "https://ecotermcomplex.pl/?page_id=2034";
-    let urlETCheck = "https://ecotermcomplex.pl/?page_id=2172";
-
-    window.addEventListener("click", (event) => {
-        let xperc = event.offsetX / screen.width * 100;
-        let yperc = event.offsetY / screen.width * 100;
-
-        console.log("left: " + xperc.toFixed(2), ", down: " + yperc.toFixed(2));
-    });
-
-    function redirectStrGł() {
-        window.location.href = urlStrGł;
-
-    }
-    function redirectOnas() {
-        window.location.href = urlOnas;
-    }
-
-    function redirectCoRobimy() {
-        window.location.href = urlCoRobimy;
-    }
-    function redirectAktualności() {
-        window.location.href = urlAktualności;
-    }
-    function redirectKontakt() {
-        window.location.href = urlKontakt;
-    }
-    function redirectETCheck() {
-        window.location.href = urlETCheck;
-    }
-
-    function scrollLowerEcoTerm() {
-        document.getElementById('listNr1').scrollIntoView({ behavior: "smooth", block: "center" })
-    }
-    function scrollLowerEcoConstruct() {
-        document.getElementById('listNr2').scrollIntoView({ behavior: "smooth", block: "center" })
-    }
-    function scrollLowerEcoMetan() {
-        document.getElementById('listNr3').scrollIntoView({ behavior: "smooth", block: "center" })
-    }
-
-
-
-</script>
-</meta>
+  <!-- CTA Section -->
+  <section class="py-20 bg-etc-500 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Gotowy na Współpracę?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Skontaktuj się z nami, aby omówić Twoje potrzeby i znaleźć najlepsze
+        rozwiązanie.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-white text-etc-500 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+      >
+        Skontaktuj się z Nami
+      </a>
+    </div>
+  </section>
+</BaseLayout>
