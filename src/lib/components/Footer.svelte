@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { contact } from '$lib/nav';
+    import LogoSmall from './LogoSmall.svelte';
 </script>
 
 <footer class="wrap">
-	<span class="logo"><b>Ecoterm</b><span>complex</span></span>
+	<span class="logo"><LogoSmall size={86}/></span>
 	<span>{contact.address} · {contact.phone} · {contact.email}</span>
 	<span>© {new Date().getFullYear()} Ecotermcomplex Sp. z o.o.</span>
 </footer>

@@ -12,8 +12,21 @@ export interface Photo {
 	position?: string;
 }
 
+export type Layout = 'editorial' | 'timeline' | 'cards' | 'accordion' | 'pipeline' | 'bands' | 'knowledge';
+
+export interface Person {
+	name: string;
+	role: string;
+	/** Krótki opis widoczny od razu. */
+	bio: string;
+	/** Dalsza część opisu, rozwijana przyciskiem. */
+	more: string;
+	photo?: string;
+}
+
 export interface PageContent {
 	slug: string;
+	layout: Layout;
 	/** Krótka nazwa w menu. */
 	nav: string;
 	eyebrow: string;
@@ -23,12 +36,14 @@ export interface PageContent {
 	lead: string;
 	photo?: Photo;
 	sections: Section[];
+	team?: { title: string; people: Person[] };
 	cta: { text: string; label: string };
 }
 
 export const pages: PageContent[] = [
 	{
 		slug: 'o-nas',
+		layout: 'editorial',
 		nav: 'O nas',
 		eyebrow: 'O nas',
 		title: 'Energia przyszłości zaczyna się od dobrze przygotowanego projektu.',
@@ -79,6 +94,29 @@ export const pages: PageContent[] = [
 				]
 			}
 		],
+		team: {
+			title: 'Zespół',
+			people: [
+				{
+					name: '[Imię i nazwisko]',
+					role: '[Stanowisko]',
+					bio: '[Krótki opis: wykształcenie, doświadczenie w energetyce odnawialnej, rozwoju inwestycji lub inżynierii. Dwa–trzy zdania.]',
+					more: '[Dalsza część opisu: kursy, uprawnienia, wcześniejsze role, obszary odpowiedzialności w Ecotermcomplex.]'
+				},
+				{
+					name: '[Imię i nazwisko]',
+					role: '[Stanowisko]',
+					bio: '[Krótki opis: wykształcenie, doświadczenie w energetyce odnawialnej, rozwoju inwestycji lub inżynierii. Dwa–trzy zdania.]',
+					more: '[Dalsza część opisu: kursy, uprawnienia, wcześniejsze role, obszary odpowiedzialności w Ecotermcomplex.]'
+				},
+				{
+					name: '[Imię i nazwisko]',
+					role: '[Stanowisko]',
+					bio: '[Krótki opis: wykształcenie, doświadczenie w energetyce odnawialnej, rozwoju inwestycji lub inżynierii. Dwa–trzy zdania.]',
+					more: '[Dalsza część opisu: kursy, uprawnienia, wcześniejsze role, obszary odpowiedzialności w Ecotermcomplex.]'
+				}
+			]
+		},
 		cta: {
 			text: 'Masz lokalizację, surowce lub pomysł na inwestycję? Porozmawiajmy o jego potencjale i o pierwszych krokach, które warto podjąć.',
 			label: 'Omów projekt'
@@ -86,6 +124,7 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'rozwoj-inwestycji',
+		layout: 'timeline',
 		nav: 'Rozwój inwestycji',
 		eyebrow: 'Rozwój inwestycji',
 		title: 'Od potencjału lokalizacji do dojrzałego projektu inwestycyjnego.',
@@ -155,6 +194,7 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'inzynieria-i-projektowanie',
+		layout: 'cards',
 		nav: 'Inżynieria',
 		eyebrow: 'Inżynieria i projektowanie',
 		title: 'Dobrze zaprojektowana instalacja to spójny system, nie zestaw urządzeń.',
@@ -216,6 +256,7 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'doradztwo-inwestycyjne',
+		layout: 'accordion',
 		nav: 'Doradztwo',
 		eyebrow: 'Doradztwo inwestycyjne',
 		title: 'Technologia ma sens wtedy, gdy uzasadniają ją liczby i warunki realizacji.',
@@ -272,6 +313,7 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'badania-i-rozwoj',
+		layout: 'pipeline',
 		nav: 'B+R',
 		eyebrow: 'Badania i rozwój',
 		title: 'Od danych procesowych do lepszych decyzji w czasie rzeczywistym.',
@@ -335,6 +377,7 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'klimat-i-zrownowazony-rozwoj',
+		layout: 'bands',
 		nav: 'Klimat',
 		eyebrow: 'Klimat i zrównoważony rozwój',
 		title: 'Lokalne zasoby. Odpowiedzialna energia. Mierzalny wpływ.',
@@ -396,6 +439,7 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'aktualnosci-i-wiedza',
+		layout: 'knowledge',
 		nav: 'Wiedza',
 		eyebrow: 'Aktualności i wiedza',
 		title: 'Wiedza, analizy i perspektywy transformacji energetycznej.',
