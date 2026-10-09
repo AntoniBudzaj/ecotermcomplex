@@ -1,3 +1,5 @@
+import { pages } from './content';
+
 export interface NavLink {
 	href: string;
 	label: string;
@@ -9,13 +11,7 @@ export interface Contact {
 	email: string;
 }
 
-export const links: NavLink[] = [
-	{ href: '/', label: 'Biogazownia' },
-	{ href: '/jak-to-dziala/', label: 'Jak to działa' },
-	{ href: '/surowce/', label: 'Surowce' },
-	{ href: '/energia/', label: 'Energia' },
-	{ href: '/o-nas/', label: 'O nas' }
-];
+export const links: NavLink[] = pages.map((p) => ({ href: `/${p.slug}/`, label: p.nav }));
 
 export const contact: Contact = {
 	address: 'ul. Ozimina 18a, 61-664 Poznań',

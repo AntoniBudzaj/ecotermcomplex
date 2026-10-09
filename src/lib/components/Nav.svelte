@@ -17,7 +17,7 @@
   const phone = new MediaQuery('min-width: 800px');
 </script>
 <header class="wrap">
-	<a href="/" class="logo" aria-label="BioEnergia – strona główna">
+	<a href="/" class="logo" aria-label="Ecotermcomplex – strona główna">
     {#if phone.current}
     <LogoFull size={48}/>
 {/if}
@@ -73,7 +73,7 @@
 	nav {
 		display: flex;
 		align-items: center;
-		gap: 40px;
+		gap: 28px;
 		font-size: 16px;
 	}
 	nav a {
@@ -107,7 +107,7 @@
 		cursor: pointer;
 	}
 
-	@media (max-width: 1000px) {
+	@media (max-width: 1100px) {
 		header {
 			height: 72px;
 		}

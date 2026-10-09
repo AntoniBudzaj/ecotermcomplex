@@ -1,7 +1,8 @@
-# BioEnergia – strona biogazowni (SvelteKit)
+# Ecotermcomplex – strona firmowa (SvelteKit)
 
-Prosta, statyczna strona w SvelteKit (Svelte 5): strona główna z ilustracją line-art oraz podstrony
-**Jak to działa**, **Surowce**, **Energia**, **O nas** i **Kontakt**.
+Prosta, statyczna strona w SvelteKit (Svelte 5): strona główna z ilustracją line-art oraz podstrony: **O nas**, **Rozwój inwestycji**, **Inżynieria i projektowanie**, **Doradztwo inwestycyjne**,
+**Badania i rozwój**, **Klimat i zrównoważony rozwój**, **Aktualności i wiedza** oraz **Kontakt**.
+Teksty podstron (poza kontaktem) są w `src/lib/content.ts` i renderuje je jeden szablon `routes/[slug]`.
 
 ## Uruchomienie
 

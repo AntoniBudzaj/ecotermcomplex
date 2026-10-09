@@ -3,9 +3,9 @@
 </script>
 
 <footer class="wrap">
-	<span class="logo"><b></b><span>Energia</span></span>
+	<span class="logo"><b>Ecoterm</b><span>complex</span></span>
 	<span>{contact.address} · {contact.phone} · {contact.email}</span>
-	<span>© {new Date().getFullYear()} BioEnergia</span>
+	<span>© {new Date().getFullYear()} Ecotermcomplex Sp. z o.o.</span>
 </footer>
 
 <style>
