@@ -18,7 +18,7 @@ export const links: NavLink[] = [
 ];
 
 export const contact: Contact = {
-	address: '[ul. Polna 00, 00-000 Miejscowość]',
-	phone: '[+48 000 000 000]',
-	email: '[kontakt@bioenergia.pl]'
+	address: 'ul. Ozimina 18a, 61-664 Poznań',
+	phone: '+48 695 8500 296',
+	email: 'biuro@ecotermcomplex.pl'
 };

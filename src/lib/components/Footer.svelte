@@ -3,7 +3,7 @@
 </script>
 
 <footer class="wrap">
-	<span class="logo"><b>Bio</b><span>Energia</span></span>
+	<span class="logo"><b></b><span>Energia</span></span>
 	<span>{contact.address} · {contact.phone} · {contact.email}</span>
 	<span>© {new Date().getFullYear()} BioEnergia</span>
 </footer>

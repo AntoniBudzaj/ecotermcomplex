@@ -18,7 +18,7 @@
 <style>
 	.band {
 		padding: clamp(40px, 5vw, 72px) clamp(28px, 5.5vw, 80px);
-		background: var(--green-soft);
+		background: var(--green);
 		border-radius: var(--radius);
 		display: flex;
 		justify-content: space-between;

@@ -6,10 +6,30 @@
 	}
 
 	let { accent = '#91C73E', animate = true }: Props = $props();
+
+	let svg: SVGSVGElement;
+	let visible = $state(false);
+
+	$effect(() => {
+		if (!animate || !svg) return;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((e) => e.isIntersecting)) {
+					visible = true;
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.25 }
+		);
+		observer.observe(svg);
+		return () => observer.disconnect();
+	});
 </script>
 
 <svg
+	bind:this={svg}
 	class:draw={animate}
+	class:in={visible}
 	viewBox="0 0 1440 520"
 	preserveAspectRatio="xMidYMax slice"
 	role="img"
@@ -124,17 +144,21 @@
 	.draw :global(.sk path) {
 		stroke-dasharray: 1;
 		stroke-dashoffset: 1;
-		animation: sk-draw 2.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 	}
-	.draw :global(.sk path:nth-child(3n)) {
-		animation-delay: 0.25s;
+	.draw.in :global(.sk path) {
+		animation: sk-draw 5.5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
 	}
-	.draw :global(.sk path:nth-child(3n + 1)) {
+	.draw.in :global(.sk path:nth-child(3n)) {
 		animation-delay: 0.5s;
+	}
+	.draw.in :global(.sk path:nth-child(3n + 1)) {
+		animation-delay: 1s;
 	}
 	.draw :global(.sk .sk-fill) {
 		opacity: 0;
-		animation: sk-fade 1.2s 2s forwards;
+	}
+	.draw.in :global(.sk .sk-fill) {
+		animation: sk-fade 2s 4.2s forwards;
 	}
 	.spin {
 		animation: sk-spin 16s linear infinite;
@@ -167,8 +191,10 @@
 		100% { opacity: 0; transform: translateY(-16px) scaleY(1.1); }
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.draw :global(.sk path) { animation: none; stroke-dashoffset: 0; }
-		.draw :global(.sk .sk-fill) { animation: none; opacity: 1; }
+		.draw :global(.sk path),
+		.draw.in :global(.sk path) { animation: none; stroke-dashoffset: 0; }
+		.draw :global(.sk .sk-fill),
+		.draw.in :global(.sk .sk-fill) { animation: none; opacity: 1; }
 		.spin { animation: none; }
 		.steam path { animation: none; opacity: 0.4; }
 	}
