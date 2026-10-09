@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Button from './Button.svelte';
+
 	interface Props {
 		text: string;
 		href: string;
@@ -11,7 +13,7 @@
 <div class="wrap">
 	<div class="band">
 		<p>{text}</p>
-		<a class="btn" {href}>{label}</a>
+		<Button {href} class="cta-btn">{label}</Button>
 	</div>
 </div>
 
@@ -31,7 +33,7 @@
 		letter-spacing: -0.02em;
 		max-width: 780px;
 	}
-	.btn {
+	.band :global(.cta-btn) {
 		flex-shrink: 0;
 	}
 	@media (max-width: 760px) {

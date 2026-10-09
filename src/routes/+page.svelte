@@ -1,6 +1,7 @@
 <script lang="ts">
 	import HeroScene from '$lib/components/HeroScene.svelte';
 	import Photo from '$lib/components/Photo.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const pillars = [
@@ -40,8 +41,8 @@
 			środowisko i ekonomię. Specjalizujemy się w biogazie, biometanie i infrastrukturze towarzyszącej.
 		</p>
 		<div class="actions">
-			<a class="btn" href="/kontakt/">Omów projekt</a>
-			<a class="link-arrow" href="/o-nas/">Poznaj Ecotermcomplex →</a>
+			<Button href="/kontakt/" class="primary-cta">Omów projekt</Button>
+			<Button variant="link" href="/o-nas/" class="secondary-cta">Poznaj Ecotermcomplex →</Button>
 		</div>
 	</div>
 	<div class="scene">
@@ -52,11 +53,11 @@
 <section class="wrap section">
 	<div class="cols-3">
 		{#each pillars as t}
-			<a class="teaser rule-col" href={t.href}>
+			<div class="teaser rule-col">
 				<h2 class="h3">{t.title}</h2>
 				<p class="small">{t.text}</p>
-				<span class="more">Więcej →</span>
-			</a>
+				<Button variant="link" href={t.href} class="more">Więcej →</Button>
+			</div>
 		{/each}
 	</div>
 </section>
@@ -82,7 +83,7 @@
 				Traktujemy inwestycję jako całość, a nie zbiór odrębnych opracowań, dzięki czemu ograniczenia
 				identyfikujemy, zanim staną się kosztownym problemem.
 			</p>
-			<a class="link-arrow" href="/o-nas/">Poznaj nas bliżej →</a>
+			<Button variant="link" href="/o-nas/">Poznaj nas bliżej →</Button>
 		</div>
 	</div>
 </section>
@@ -108,7 +109,7 @@
 				</li>
 			{/each}
 		</ol>
-		<a class="link-arrow" href="/rozwoj-inwestycji/">Zobacz, jak rozwijamy inwestycje →</a>
+		<Button variant="link" href="/rozwoj-inwestycji/">Zobacz, jak rozwijamy inwestycje →</Button>
 	</div>
 </section>
 
@@ -138,7 +139,7 @@
 					</li>
 				{/each}
 			</ul>
-			<a class="link-arrow" href="/inzynieria-i-projektowanie/">Zobacz zakres inżynierii →</a>
+			<Button variant="link" href="/inzynieria-i-projektowanie/">Zobacz zakres inżynierii →</Button>
 		</div>
 		<Photo
 			src="/images/biogazownia-instalacja.jpg"
@@ -164,7 +165,7 @@
 				Opisane kierunki stanowią prowadzone lub planowane prace badawczo-rozwojowe, a nie gotowy
 				produkt komercyjny.
 			</p>
-			<a class="link-arrow" href="/badania-i-rozwoj/">Poznaj kierunki B+R →</a>
+			<Button variant="link" href="/badania-i-rozwoj/">Poznaj kierunki B+R →</Button>
 		</div>
 	</div>
 </section>
@@ -180,7 +181,8 @@
 <style>
 	.hero {
 		position: relative;
-		min-height: min(60vh, calc(100svh - 96px));
+    padding-top: 4rem;
+		min-height: min(75vh, calc(100svh - 96px));
 		overflow: hidden;
 	}
 	.text {
@@ -191,10 +193,10 @@
 		gap: 28px;
 	}
 	.text > * {
-		max-width: 580px;
+		max-width: 648x;
 	}
 	.text .lead {
-		max-width: 500px;
+		max-width: 648px;
 	}
 	.actions {
 		display: flex;
@@ -210,15 +212,21 @@
 		bottom: 0;
 	}
 	.teaser {
+		position: relative;
+	}
+	/* cała karta jest klikalna przez rozciągnięty link */
+	.teaser :global(.more)::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+	}
+	.teaser :global(.more) {
+		align-self: flex-start;
 		text-decoration: none;
 	}
-	.teaser:hover .more {
+	.teaser:hover :global(.more) {
 		text-decoration: underline;
 		text-underline-offset: 5px;
-	}
-	.more {
-		font-weight: 500;
-		font-size: 16px;
 	}
 	.path {
 		list-style: none;
@@ -271,10 +279,10 @@
 			height: 290px;
 			margin-top: 16px;
 		}
-		.actions .btn {
+		.actions :global(.primary-cta) {
 			width: 100%;
 		}
-		.actions .link-arrow {
+		.actions :global(.secondary-cta) {
 			margin-inline: auto;
 		}
 	}

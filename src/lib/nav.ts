@@ -1,5 +1,3 @@
-import { pages } from './content';
-
 export interface NavLink {
 	href: string;
 	label: string;
@@ -11,7 +9,15 @@ export interface Contact {
 	email: string;
 }
 
-export const links: NavLink[] = pages.map((p) => ({ href: `/${p.slug}/`, label: p.nav }));
+export const links: NavLink[] = [
+	{ href: '/o-nas/', label: 'O nas' },
+	{ href: '/rozwoj-inwestycji/', label: 'Rozwój inwestycji' },
+	{ href: '/inzynieria-i-projektowanie/', label: 'Inżynieria' },
+	{ href: '/doradztwo-inwestycyjne/', label: 'Doradztwo' },
+	{ href: '/badania-i-rozwoj/', label: 'B+R' },
+	{ href: '/klimat-i-zrownowazony-rozwoj/', label: 'Klimat' },
+	{ href: '/aktualnosci-i-wiedza/', label: 'Wiedza' }
+];
 
 export const contact: Contact = {
 	address: 'ul. Ozimina 18a, 61-664 Poznań',

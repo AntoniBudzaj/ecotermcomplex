@@ -1,7 +1,16 @@
 <script lang="ts">
+	import Button from '$lib/components/Button.svelte';
 	import Photo from '$lib/components/Photo.svelte';
 	import { contact } from '$lib/nav';
-	import { reasons } from '$lib/content';
+
+	const reasons = [
+		'Rozwój projektu biogazowego, biometanowego lub hybrydowego źródła OZE.',
+		'Ocena działki, bazy substratowej, infrastruktury lub istniejącego projektu.',
+		'Wsparcie technologiczne, projektowe, środowiskowe lub przyłączeniowe.',
+		'Studium wykonalności, due diligence i przygotowanie materiałów dla inwestora.',
+		'Współpraca z gospodarstwem, zakładem przemysłowym, samorządem lub właścicielem gruntu.',
+		'Partnerstwo badawczo-rozwojowe, pomiary, analityka, systemy cyfrowe i demonstratory.'
+	];
 
 	const topics = ['Rozwój projektu', 'Projektowanie', 'Doradztwo', 'B+R', 'Inne'];
 	let topic = $state(topics[0]);
@@ -69,9 +78,7 @@
 				<legend class="label">Temat współpracy</legend>
 				<div class="topics">
 					{#each topics as t}
-						<button type="button" class="chip" class:on={topic === t} aria-pressed={topic === t} onclick={() => (topic = t)}>
-							{t}
-						</button>
+						<Button variant="chip" selected={topic === t} aria-pressed={topic === t} onclick={() => (topic = t)}>{t}</Button>
 					{/each}
 				</div>
 				<input type="hidden" name="topic" value={topic} />
@@ -93,7 +100,7 @@
 				<input id="ec-rodo" type="checkbox" required />
 				<label for="ec-rodo">Zgadzam się na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na wiadomość.</label>
 			</div>
-			<button class="btn" type="submit" style="align-self: flex-start">Wyślij wiadomość</button>
+			<Button type="submit" class="submit">Wyślij wiadomość</Button>
 		{/if}
 	</form>
 </section>
@@ -189,19 +196,8 @@
 		flex-wrap: wrap;
 		gap: 10px;
 	}
-	.chip {
-		min-height: 44px;
-		padding: 0 20px;
-		border-radius: 999px;
-		border: 1.5px solid var(--ink);
-		background: transparent;
-		color: var(--ink);
-		font: 400 15px 'DM Sans', sans-serif;
-		cursor: pointer;
-	}
-	.chip.on {
-		background: var(--green);
-		border-color: var(--green);
+	.form :global(.submit) {
+		align-self: flex-start;
 	}
 	.consent {
 		display: flex;

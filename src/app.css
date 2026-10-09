@@ -8,8 +8,8 @@
 	--card-line: #e4e0d6;
 	--green: #91c73e;
 	--green-soft: #e9f2d8;
-	--pad: clamp(20px, 8.33vw, 120px);
-	--section: clamp(56px, 6.2vw, 96px);
+	--pad: clamp(20px, 8.33vw, 80px);
+	--section: clamp(56px, 6.2vw, 64px);
 	--radius: 24px;
 }
 
@@ -28,6 +28,7 @@ body {
 	background: var(--bg);
 	color: var(--ink);
 	font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 600;
 	font-size: 17px;
 	line-height: 1.6;
 }
@@ -58,7 +59,7 @@ p {
 
 .wrap {
 	padding-inline: var(--pad);
-	max-width: 1440px;
+	max-width: 85vw;
 	margin-inline: auto;
 }
 
@@ -120,31 +121,6 @@ p {
 	background: var(--green);
 }
 
-/* ---------- buttons ---------- */
-.btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 54px;
-	padding: 0 30px;
-	border-radius: 999px;
-	border: 0;
-	background: var(--ink);
-	color: var(--bg);
-	font: 500 16.5px/1 'DM Sans', sans-serif;
-	text-decoration: none;
-	cursor: pointer;
-	transition: transform 0.15s ease, background 0.15s ease;
-}
-.btn:hover {
-	color: var(--bg);
-	background: #000;
-	transform: translateY(-1px);
-}
-.link-arrow {
-	font-size: 16.5px;
-	font-weight: 500;
-}
 /* ---------- layout ---------- */
 .section {
 	padding-block: var(--section);

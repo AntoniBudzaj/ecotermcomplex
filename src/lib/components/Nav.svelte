@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { links } from '$lib/nav';
     import { MediaQuery } from 'svelte/reactivity';
+	import Button from './Button.svelte';
     import LogoFull from './LogoFull.svelte';
 
 	let open = $state(false);
@@ -23,9 +24,9 @@
 {/if}
 	</a>
 
-	<button
+	<Button
+		variant="icon"
 		class="toggle"
-		type="button"
 		aria-expanded={open}
 		aria-controls="main-nav"
 		aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
@@ -38,15 +39,21 @@
 				<path d="M1 1h16M1 11h16" />
 			{/if}
 		</svg>
-	</button>
+	</Button>
 
 	<nav id="main-nav" class:open>
 		{#each links as link}
-			<a href={link.href} class:active={isActive(link.href)} aria-current={isActive(link.href) ? 'page' : undefined}>
+			<Button
+				href={link.href}
+				variant="nav"
+				class="nav-link"
+				selected={isActive(link.href)}
+				aria-current={isActive(link.href) ? 'page' : undefined}
+			>
 				{link.label}
-			</a>
+			</Button>
 		{/each}
-		<a href="/kontakt/" class="pill" class:filled={isActive('/kontakt/')}>Kontakt</a>
+		<Button href="/kontakt/" variant="outline" class="pill" selected={isActive('/kontakt/')}>Kontakt</Button>
 	</nav>
 </header>
 
@@ -76,35 +83,8 @@
 		gap: 28px;
 		font-size: 16px;
 	}
-	nav a {
-		text-decoration: none;
-		padding-bottom: 4px;
-		border-bottom: 2px solid transparent;
-	}
-	nav a.active {
-		border-bottom-color: var(--green);
-	}
-	.pill {
-		padding: 12px 22px;
-		border: 1.5px solid var(--ink);
-		border-radius: 999px;
-		font-weight: 500;
-	}
-	.pill.filled {
-		background: var(--green);
-		border-color: var(--green);
-	}
-	.toggle {
+	header :global(.toggle) {
 		display: none;
-		width: 44px;
-		height: 44px;
-		border: 1.5px solid var(--ink);
-		border-radius: 22px;
-		background: transparent;
-		color: var(--ink);
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
 	}
 
 	@media (max-width: 1100px) {
@@ -114,7 +94,7 @@
 		.logo {
 			font-size: 21px;
 		}
-		.toggle {
+		header :global(.toggle) {
 			display: inline-flex;
 		}
 		nav {
@@ -134,19 +114,18 @@
 		nav.open {
 			display: flex;
 		}
-		nav a {
+		nav :global(.nav-link) {
+			justify-content: flex-start;
 			padding: 14px 0;
 			border-bottom: 1px solid var(--line);
 		}
-		nav a.active {
+		nav :global(.nav-link[data-selected]) {
 			border-bottom-color: var(--line);
 			box-shadow: inset 3px 0 0 var(--green);
 			padding-left: 14px;
 		}
-		.pill {
+		nav :global(.pill) {
 			margin-top: 18px;
-			text-align: center;
-			border-bottom: 1.5px solid var(--ink);
 		}
 	}
 </style>
