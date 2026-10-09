@@ -12,8 +12,21 @@ export interface Photo {
 	position?: string;
 }
 
+export interface Person {
+	name: string;
+	role: string;
+	/** Krótki opis widoczny od razu. */
+	bio: string;
+	/** Dalsza część opisu, rozwijana przyciskiem. */
+	more: string;
+	photo?: string;
+}
+
+export type Layout = 'editorial' | 'timeline' | 'cards' | 'accordion' | 'pipeline' | 'bands' | 'knowledge';
+
 export interface PageContent {
 	slug: string;
+	layout: Layout;
 	/** Krótka nazwa w menu. */
 	nav: string;
 	eyebrow: string;
@@ -23,17 +36,18 @@ export interface PageContent {
 	lead: string;
 	photo?: Photo;
 	sections: Section[];
+	team?: { title: string; people: Person[] };
 	cta: { text: string; label: string };
 }
 
 export const pages: PageContent[] = [
 	{
 		slug: 'o-nas',
+		layout: 'editorial',
 		nav: 'O nas',
 		eyebrow: 'O nas',
 		title: 'Energia przyszłości zaczyna się od dobrze przygotowanego projektu.',
-		tagline:
-			'Rozwijamy przedsięwzięcia, które łączą potencjał lokalnych zasobów z technologią, bezpieczeństwem inwestycyjnym i realną wartością gospodarczą.',
+		tagline: 'Rozwijamy przedsięwzięcia, które łączą potencjał lokalnych zasobów z technologią, bezpieczeństwem inwestycyjnym i realną wartością gospodarczą.',
 		lead: 'Ecotermcomplex to firma działająca na styku energetyki odnawialnej, inżynierii środowiska i rozwoju inwestycji. Pomagamy przekształcać pomysły oraz lokalne możliwości w projekty o sprecyzowanych parametrach technicznych, uregulowanych uwarunkowaniach administracyjnych i uzasadnieniu ekonomicznym. Specjalizujemy się w projektach biogazowych i biometanowych, a także w rozwiązaniach uzupełniających: kogeneracji, fotowoltaice, magazynowaniu energii oraz infrastrukturze sieciowej.',
 		photo: {
 			src: '/images/biogazownia-kopuly.jpg',
@@ -79,6 +93,29 @@ export const pages: PageContent[] = [
 				]
 			}
 		],
+		team: {
+			title: 'Zespół',
+			people: [
+				{
+					name: '[Imię i nazwisko]',
+					role: '[Stanowisko]',
+					bio: '[Krótki opis: wykształcenie, doświadczenie w energetyce odnawialnej, rozwoju inwestycji lub inżynierii. Dwa–trzy zdania.]',
+					more: '[Dalsza część opisu: kursy, uprawnienia, wcześniejsze role, obszary odpowiedzialności w Ecotermcomplex.]'
+				},
+				{
+					name: '[Imię i nazwisko]',
+					role: '[Stanowisko]',
+					bio: '[Krótki opis: wykształcenie, doświadczenie w energetyce odnawialnej, rozwoju inwestycji lub inżynierii. Dwa–trzy zdania.]',
+					more: '[Dalsza część opisu: kursy, uprawnienia, wcześniejsze role, obszary odpowiedzialności w Ecotermcomplex.]'
+				},
+				{
+					name: '[Imię i nazwisko]',
+					role: '[Stanowisko]',
+					bio: '[Krótki opis: wykształcenie, doświadczenie w energetyce odnawialnej, rozwoju inwestycji lub inżynierii. Dwa–trzy zdania.]',
+					more: '[Dalsza część opisu: kursy, uprawnienia, wcześniejsze role, obszary odpowiedzialności w Ecotermcomplex.]'
+				}
+			]
+		},
 		cta: {
 			text: 'Masz lokalizację, surowce lub pomysł na inwestycję? Porozmawiajmy o jego potencjale i o pierwszych krokach, które warto podjąć.',
 			label: 'Omów projekt'
@@ -86,11 +123,11 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'rozwoj-inwestycji',
+		layout: 'timeline',
 		nav: 'Rozwój inwestycji',
 		eyebrow: 'Rozwój inwestycji',
 		title: 'Od potencjału lokalizacji do dojrzałego projektu inwestycyjnego.',
-		tagline:
-			'Budujemy wartość inwestycji przez systematyczne ograniczanie ryzyk — od pierwszej analizy lokalizacji po projekt przygotowany do decyzji inwestycyjnej.',
+		tagline: 'Budujemy wartość inwestycji przez systematyczne ograniczanie ryzyk — od pierwszej analizy lokalizacji po projekt przygotowany do decyzji inwestycyjnej.',
 		lead: 'Proces developmentu wymaga jednoczesnego zarządzania lokalizacją, technologią, dostępnością substratów, decyzjami administracyjnymi, przyłączeniami i ekonomią przedsięwzięcia. Ecotermcomplex łączy te obszary w spójną ścieżkę rozwoju, której celem jest stworzenie projektu możliwego do realizacji i atrakcyjnego dla przyszłego inwestora.',
 		photo: {
 			src: '/images/biogazownia-zachod.jpg',
@@ -155,11 +192,11 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'inzynieria-i-projektowanie',
+		layout: 'cards',
 		nav: 'Inżynieria',
 		eyebrow: 'Inżynieria i projektowanie',
 		title: 'Dobrze zaprojektowana instalacja to spójny system, nie zestaw urządzeń.',
-		tagline:
-			'Projektowanie, które łączy technologię procesu z realiami lokalizacji, wymogami formalnymi i późniejszą eksploatacją.',
+		tagline: 'Projektowanie, które łączy technologię procesu z realiami lokalizacji, wymogami formalnymi i późniejszą eksploatacją.',
 		lead: 'W Ecotermcomplex prace inżynieryjne traktujemy jako narzędzie rozwiązywania rzeczywistych problemów inwestycyjnych. Łączymy koncepcję procesową z układem przestrzennym, infrastrukturą techniczną, bezpieczeństwem i wymaganiami eksploatacji. Przygotowujemy oraz koordynujemy opracowania potrzebne do podejmowania decyzji, prowadzenia postępowań administracyjnych i dalszego projektowania.',
 		photo: {
 			src: '/images/budowa-dron.jpg',
@@ -216,11 +253,11 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'doradztwo-inwestycyjne',
+		layout: 'accordion',
 		nav: 'Doradztwo',
 		eyebrow: 'Doradztwo inwestycyjne',
 		title: 'Technologia ma sens wtedy, gdy uzasadniają ją liczby i warunki realizacji.',
-		tagline:
-			'Dobre decyzje kapitałowe wymagają połączenia wiedzy technicznej, ekonomiki projektu i rozumienia ryzyka regulacyjnego.',
+		tagline: 'Dobre decyzje kapitałowe wymagają połączenia wiedzy technicznej, ekonomiki projektu i rozumienia ryzyka regulacyjnego.',
 		lead: 'Wspieramy inwestorów przy wyborze, ocenie i przygotowaniu przedsięwzięć związanych z energetyką odnawialną oraz gospodarką surowcową. Nasze doradztwo obejmuje zarówno wczesną identyfikację możliwości inwestycyjnych, jak i ocenę projektów już zaawansowanych pod względem formalnym lub technicznym.',
 		sections: [
 			{
@@ -272,11 +309,11 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'badania-i-rozwoj',
+		layout: 'pipeline',
 		nav: 'B+R',
 		eyebrow: 'Badania i rozwój',
 		title: 'Od danych procesowych do lepszych decyzji w czasie rzeczywistym.',
-		tagline:
-			'Rozwijamy podejście do biogazowni i biometanowni jako inteligentnych systemów procesowych, wykorzystujących pomiary, modele i dane do wspierania decyzji operacyjnych.',
+		tagline: 'Rozwijamy podejście do biogazowni i biometanowni jako inteligentnych systemów procesowych, wykorzystujących pomiary, modele i dane do wspierania decyzji operacyjnych.',
 		lead: 'Transformacja energetyczna wymaga nie tylko nowych instalacji, lecz również nowych metod ich prowadzenia. Obszar B+R Ecotermcomplex koncentruje się na łączeniu pomiarów, analizy danych, modeli procesowych i narzędzi decyzyjnych. Kierunkiem rozwijanych prac jest poprawa przewidywalności produkcji, stabilności operacyjnej, efektywności surowcowej oraz jakości raportowania środowiskowego.',
 		sections: [
 			{
@@ -335,11 +372,11 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'klimat-i-zrownowazony-rozwoj',
+		layout: 'bands',
 		nav: 'Klimat',
 		eyebrow: 'Klimat i zrównoważony rozwój',
 		title: 'Lokalne zasoby. Odpowiedzialna energia. Mierzalny wpływ.',
-		tagline:
-			'Korzyść środowiskowa musi wynikać z danych, technologii i odpowiedzialnej eksploatacji — nie wyłącznie z faktu, że inwestycja należy do sektora OZE.',
+		tagline: 'Korzyść środowiskowa musi wynikać z danych, technologii i odpowiedzialnej eksploatacji — nie wyłącznie z faktu, że inwestycja należy do sektora OZE.',
 		lead: 'Postrzegamy projekty biogazowe i biometanowe jako element gospodarki obiegu zamkniętego oraz transformacji energetycznej. Ich potencjał wynika z możliwości wykorzystania odpowiednio dobranych strumieni materii organicznej, produkcji odnawialnych nośników energii oraz ograniczenia części emisji występujących w konwencjonalnych modelach zagospodarowania surowców. Wartość środowiskowa każdej inwestycji wymaga jednak indywidualnego potwierdzenia.',
 		photo: {
 			src: '/images/biogazownia-rzepak.jpg',
@@ -396,11 +433,11 @@ export const pages: PageContent[] = [
 	},
 	{
 		slug: 'aktualnosci-i-wiedza',
+		layout: 'knowledge',
 		nav: 'Wiedza',
 		eyebrow: 'Aktualności i wiedza',
 		title: 'Wiedza, analizy i perspektywy transformacji energetycznej.',
-		tagline:
-			'Wiedza branżowa, która pomaga zrozumieć inwestycje, technologię, regulacje i ekonomię projektów energetycznych.',
+		tagline: 'Wiedza branżowa, która pomaga zrozumieć inwestycje, technologię, regulacje i ekonomię projektów energetycznych.',
 		lead: 'Publikujemy materiały poświęcone rozwojowi projektów OZE, biogazu i biometanu, praktyce projektowej, zagadnieniom środowiskowym, modelom inwestycyjnym oraz badaniom nad nowymi narzędziami dla instalacji przemysłowych. Naszym celem jest przekładanie złożonych tematów technicznych i regulacyjnych na informacje pomocne inwestorom, samorządom, rolnikom oraz partnerom technologicznym.',
 		sections: [
 			{
@@ -411,7 +448,9 @@ export const pages: PageContent[] = [
 			},
 			{
 				title: 'Rozwój projektów — od pomysłu do decyzji',
-				paras: ['Przykładowe tematy publikacji:'],
+				paras: [
+					'Przykładowe tematy publikacji:'
+				],
 				items: [
 					'jak ocenić grunt pod biometanownię',
 					'jak przygotować bazę substratową',
@@ -422,7 +461,9 @@ export const pages: PageContent[] = [
 			},
 			{
 				title: 'Technologia i eksploatacja',
-				paras: ['Przykładowe tematy publikacji:'],
+				paras: [
+					'Przykładowe tematy publikacji:'
+				],
 				items: [
 					'bilans masowy w biogazowni',
 					'metody uzdatniania biogazu',
@@ -434,7 +475,9 @@ export const pages: PageContent[] = [
 			},
 			{
 				title: 'Rynek, przepisy i finansowanie',
-				paras: ['Przykładowe tematy publikacji:'],
+				paras: [
+					'Przykładowe tematy publikacji:'
+				],
 				items: [
 					'warunki prowadzenia projektu biometanowego',
 					'ryzyka przyłączeniowe',
@@ -447,7 +490,9 @@ export const pages: PageContent[] = [
 			},
 			{
 				title: 'Badania i innowacje',
-				paras: ['Przykładowe tematy publikacji:'],
+				paras: [
+					'Przykładowe tematy publikacji:'
+				],
 				items: [
 					'metody NIR i techniki akustyczne w ocenie surowców',
 					'wirtualne czujniki',
