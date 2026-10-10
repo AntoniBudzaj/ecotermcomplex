@@ -66,7 +66,7 @@
 	const num = (i: number) => String(i + 1).padStart(2, '0');
 </script>
 
-{#snippet body(s: { paras?: string[]; items?: string[]; note?: string })}
+{#snippet body(s: { paras?: string[]; items?: string[]; note?: string; img?:{src:string,alt:string}})}
 	{#each s.paras ?? [] as p}
 		<p class="body">{p}</p>
 	{/each}
@@ -77,6 +77,9 @@
 					<span class="dot"></span>
 					<span class="body">{item}</span>
 				</li>
+          {#if s.img}
+            <img src={s.img.src} alt={s.img.alt}/>
+          {/if}
 			{/each}
 		</ul>
 	{/if}
@@ -98,7 +101,7 @@
 	<section class="wrap">
 		<div class="grid-2">
 			{#each page.sections as s, i}
-				<article class="card tile" class:wide={i === 0}>
+				<article class="card tile" class:wide={i === 0 || i === 5}>
 					<span class="idx">{num(i)}</span>
 					<h2 class="h3 tile-title">{s.title}</h2>
 					{@render body(s)}

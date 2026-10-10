@@ -51,7 +51,6 @@
 		font-family: 'DM Sans', sans-serif;
 		text-decoration: none;
 		cursor: pointer;
-		border-radius: 100px;
 		padding: 8px 22px;
 		font-weight: 600;
 		transition:
@@ -80,7 +79,7 @@
 	}
 
   .btn[data-variant='outline']:hover{
-    box-shadow: inset 0 0 0 2px var(--green); 
+    background: var(--green-soft);
     transition: ease-in-out 150ms;
   }
 	.btn[data-variant='outline'][data-selected] {

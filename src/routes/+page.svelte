@@ -41,7 +41,7 @@
 			środowisko i ekonomię. Specjalizujemy się w biogazie, biometanie i infrastrukturze towarzyszącej.
 		</p>
 		<div class="actions">
-			<Button href="/kontakt/" class="primary-cta">Omów projekt</Button>
+			<Button variant="outline" href="/kontakt/" class="primary-cta">Omów projekt</Button>
 			<Button variant="link" href="/o-nas/" class="secondary-cta">Poznaj Ecotermcomplex →</Button>
 		</div>
 	</div>
