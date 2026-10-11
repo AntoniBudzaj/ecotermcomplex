@@ -127,7 +127,7 @@
 				łańcucha dostaw.
 			</p>
 		</div>
-		<GasToggle />
+		<GasToggle variant="fork" />
 	</div>
 </section>
 
