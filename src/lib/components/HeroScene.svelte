@@ -37,6 +37,24 @@
 >
 <g transform="translate(130 0)">
 <g class="sk" fill="none" stroke="#2B2B2B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" shape-rendering="geometricPrecision">
+<g transform="translate(150 118)">
+<circle class="sk-fill" r="30" fill="{accent}" fill-opacity="0.5" stroke="none" />
+<path pathLength="1" d="M -30 0 a 30 30 0 1 0 60 0 a 30 30 0 1 0 -60 0" />
+<g class:sun-spin={animate}>
+<path pathLength="1" d="M42.0 0.0 L 60.0 0.0" />
+<path pathLength="1" d="M36.4 21.0 L 45.0 26.0" />
+<path pathLength="1" d="M21.0 36.4 L 30.0 52.0" />
+<path pathLength="1" d="M0.0 42.0 L 0.0 52.0" />
+<path pathLength="1" d="M-21.0 36.4 L -30.0 52.0" />
+<path pathLength="1" d="M-36.4 21.0 L -45.0 26.0" />
+<path pathLength="1" d="M-42.0 0.0 L -60.0 0.0" />
+<path pathLength="1" d="M-36.4 -21.0 L -45.0 -26.0" />
+<path pathLength="1" d="M-21.0 -36.4 L -30.0 -52.0" />
+<path pathLength="1" d="M-0.0 -42.0 L -0.0 -52.0" />
+<path pathLength="1" d="M21.0 -36.4 L 30.0 -52.0" />
+<path pathLength="1" d="M36.4 -21.0 L 45.0 -26.0" />
+</g>
+</g>
 <path pathLength="1" d="M700 86 C 728 76, 770 76, 798 88" />
 <path pathLength="1" d="M726 102 C 746 97, 770 97, 788 102" />
 <path pathLength="1" d="M930 66 C 954 58, 988 58, 1010 67" />
@@ -160,6 +178,9 @@
 	.draw.in :global(.sk .sk-fill) {
 		animation: sk-fade 1.2s 2.3s forwards;
 	}
+	.sun-spin {
+		animation: sk-spin 70s linear infinite;
+	}
 	.spin {
 		animation: sk-spin 9s linear infinite;
 	}
@@ -196,6 +217,7 @@
 		.draw :global(.sk .sk-fill),
 		.draw.in :global(.sk .sk-fill) { animation: none; opacity: 1; }
 		.spin { animation: none; }
+		.sun-spin { animation: none; }
 		.steam path { animation: none; opacity: 0.4; }
 	}
 </style>
