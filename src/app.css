@@ -10,7 +10,9 @@
 	--green-soft: #e9f2d8;
 	--pad: clamp(20px, 8.33vw, 80px);
 	--section: clamp(56px, 6.2vw, 64px);
-	--radius: 24px;
+	--radius: 0;
+	--font-display: 'Michroma', 'DM Sans', system-ui, sans-serif;
+	--font-body: 'DM Sans', system-ui, sans-serif;
 }
 
 *,
@@ -27,9 +29,9 @@ body {
 	margin: 0;
 	background: var(--bg);
 	color: var(--ink);
-	font-family: 'DM Sans', system-ui, sans-serif;
-  font-weight: 600;
-	font-size: 17px;
+	font-family: var(--font-body);
+	font-weight: 600;
+	font-size: 1.0625rem;
 	line-height: 1.6;
 }
 
@@ -64,61 +66,53 @@ p {
 }
 
 /* ---------- type ---------- */
-.display {
-	font-size: clamp(40px, 5.2vw, 76px);
-	line-height: 1.05;
+.display,
+.h1,
+.h2,
+.h3 {
+	font-family: var(--font-display);
 	font-weight: 400;
-	letter-spacing: -0.035em;
+}
+.display {
+	font-size: clamp(1.75rem, 3.9vw, 3.25rem);
+	line-height: 1.12;
+	letter-spacing: -0.01em;
 }
 .h1 {
-	font-size: clamp(38px, 4.7vw, 68px);
-	line-height: 1.05;
-	font-weight: 400;
-	letter-spacing: -0.035em;
+	font-size: clamp(1.625rem, 3.4vw, 2.75rem);
+	line-height: 1.15;
+	letter-spacing: -0.01em;
 }
 .h2 {
-	font-size: clamp(30px, 3.1vw, 44px);
-	line-height: 1.1;
-	font-weight: 400;
-	letter-spacing: -0.03em;
+	font-size: clamp(1.25rem, 2.3vw, 1.875rem);
+	line-height: 1.2;
+	letter-spacing: -0.005em;
 }
 .h3 {
-	font-size: 22px;
-	font-weight: 500;
-	letter-spacing: -0.01em;
-	line-height: 1.3;
+	font-size: 1rem;
+	letter-spacing: 0;
+	line-height: 1.35;
 }
 .lead {
-	font-size: clamp(17px, 1.35vw, 19px);
+	font-size: clamp(1.0625rem, 1.35vw, 1.1875rem);
 	line-height: 1.65;
 	color: var(--muted);
 }
 .body {
-	font-size: 18px;
+	font-size: 1.125rem;
 	line-height: 1.7;
 	color: var(--muted);
 }
 .small {
-	font-size: 16px;
+	font-size: 1rem;
 	line-height: 1.6;
 	color: var(--muted);
 }
 
 .eyebrow {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	font-size: 14px;
+	font-size: 0.9375rem;
 	font-weight: 500;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
 	color: var(--muted);
-}
-.eyebrow::before {
-	content: '';
-	width: 28px;
-	height: 2px;
-	background: var(--green);
 }
 
 /* ---------- layout ---------- */
@@ -200,7 +194,7 @@ p {
 	padding: 32px;
 	background: var(--card);
 	border: 1.5px solid var(--card-line);
-	border-radius: 20px;
+	border-radius: 0;
 }
 .card-soft {
 	display: flex;
@@ -208,67 +202,30 @@ p {
 	gap: 14px;
 	padding: 36px;
 	background: var(--green-soft);
-	border-radius: var(--radius);
+	border-radius: 0;
 }
 .dot {
 	width: 12px;
 	height: 12px;
-	border-radius: 6px;
+	border-radius: 0;
 	background: var(--green);
 	flex-shrink: 0;
 }
 .placeholder {
 	border: 1.5px dashed #bdb8ac;
-	border-radius: 20px;
+	border-radius: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 14px;
+	font-size: 0.875rem;
 	color: var(--muted);
 	text-align: center;
 	padding: 16px;
 }
 
-/* ---------- forms ---------- */
-.field {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-}
-.field label,
-.field .label {
-	font-size: 14.5px;
-	font-weight: 500;
-}
-.field input,
-.field select,
-.field textarea {
-	width: 100%;
-	min-height: 52px;
-	padding: 0 16px;
-	border: 1.5px solid var(--ink);
-	border-radius: 12px;
-	background: var(--bg);
-	color: var(--ink);
-	font: 400 16px 'DM Sans', sans-serif;
-}
-.field textarea {
-	padding: 14px 16px;
-	min-height: 150px;
-	resize: vertical;
-}
-.fields-2 {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 16px;
-}
-@media (max-width: 560px) {
-	.fields-2 {
-		grid-template-columns: 1fr;
-	}
-}
+
 .form-note {
-	font-size: 15px;
+	font-size: 0.9375rem;
 	color: var(--muted);
 }
 
@@ -280,3 +237,57 @@ p {
 	clip: rect(0 0 0 0);
 	white-space: nowrap;
 }
+
+/* ---------- telefon: węższe marginesy i zwarty tekst ---------- */
+@media (max-width: 860px) {
+	.wrap {
+		max-width: 100%;
+	}
+}
+@media (max-width: 700px) {
+	:root {
+		--pad: 1.125rem;
+		--section: 2.5rem;
+		--radius: 0;
+	}
+	body {
+		font-size: 0.875rem;
+		line-height: 1.55;
+	}
+	.display {
+		font-size: 2.25rem;
+	}
+	.h1 {
+		font-size: 2rem;
+	}
+	.h2 {
+		font-size: 1.5rem;
+	}
+	.h3 {
+		font-size: 1.125rem;
+	}
+	.lead,
+	.body,
+	.small {
+		font-size: 1rem;
+		line-height: 1.55;
+	}
+	.stack {
+		gap: 0.875rem;
+	}
+	.card {
+		padding: 1.25rem;
+	}
+	.card-soft {
+		padding: 1.5rem;
+	}
+	.cols-3,
+	.cols-4 {
+		gap: 1.25rem;
+	}
+	.rule-col {
+		gap: 0.5rem;
+		padding-top: 0.875rem;
+	}
+}
+

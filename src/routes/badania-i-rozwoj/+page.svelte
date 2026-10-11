@@ -1,5 +1,9 @@
 <script lang="ts">
 	import PageIntro from '$lib/components/PageIntro.svelte';
+	import ProcessFlow from '$lib/components/ProcessFlow.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import Photo from '$lib/components/Photo.svelte';
+	import Carousel from '$lib/components/Carousel.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const page = {
@@ -64,8 +68,15 @@
 		}
 	};
 
-	const num = (i: number) => String(i + 1).padStart(2, '0');
-	const pipeline = ['Pomiar', 'Dane', 'Model', 'Decyzja', 'Walidacja'];
+	const steps = [
+		{ title: 'Pomiar', text: 'Szybka charakterystyka substratów metodami spektroskopowymi, optycznymi i akustycznymi oraz dane o przepływach, temperaturach, ciśnieniach i jakości gazu.' },
+		{ title: 'Dane', text: 'Powiązanie charakterystyki wsadu ze stanem fermentacji, uzyskiem metanu, bilansem energii, kosztami i śladem emisji. Łączymy sygnały z czujników, SCADA i badań laboratoryjnych.' },
+		{ title: 'Model', text: 'Modele fizykochemiczne połączone z uczeniem maszynowym: wirtualne czujniki, prognoza uzysku gazu i sygnały odchyleń od oczekiwanego stanu pracy.' },
+		{ title: 'Decyzja', text: 'Wspomaganie decyzji operacyjnych: mieszanka substratów, harmonogram podawania, energia i logistyka. Oceniamy koszt wsadu, transport, emisje metanu i przewidywalność pracy.' },
+		{ title: 'Walidacja', text: 'Testy laboratoryjne, a potem walidacja w środowisku przemysłowym. Sprawdzamy powtarzalność, odporność na zmianę substratów i użyteczność dla obsługi instalacji.' }
+	];
+
+	const tones = ['white', 'soft', 'sand', 'white', 'ink', 'green', 'white'] as const;
 </script>
 
 {#snippet body(s: { paras?: string[]; items?: string[]; note?: string })}
@@ -94,21 +105,22 @@
 
 	<section class="wrap">
 		<div class="pipe rule">
-			<div class="eyebrow">Ścieżka badawcza</div>
-			<ol class="flow">
-				{#each pipeline as step, i}
-					<li><span class="idx">{num(i)}</span>{step}</li>
-				{/each}
-			</ol>
+			<ProcessFlow {steps} label="Ścieżka badawcza" />
 		</div>
-		<div class="grid-2 research">
+	</section>
+
+	<section class="wrap research">
+		<div class="research-photo">
+			<Photo src="/images/zbiornik-dron.jpg" alt="Zbiornik fermentacyjny z zieloną kopułą membranową, widok z drona" caption="Zbiornik fermentacyjny z dachem membranowym, zdjęcie poglądowe" height="20rem" position="center 40%" />
+		</div>
+		<Carousel label="Kierunki badań">
 			{#each page.sections as s, i}
-				<article class="rule-col r-item" class:wide={i === page.sections.length - 1 && page.sections.length % 2 === 1}>
+				<Card tone={tones[i % tones.length]} class="r-item">
 					<h2 class="h3 r-title">{s.title}</h2>
 					{@render body(s)}
-				</article>
+				</Card>
 			{/each}
-		</div>
+		</Carousel>
 	</section>
 
 <section class="section">
@@ -132,88 +144,27 @@
 		margin-top: 10px;
 	}
 	.note {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		line-height: 1.6;
 		color: var(--caption);
 		padding-left: 16px;
 		border-left: 2px solid var(--green);
 	}
-	.idx {
-		font-size: 15px;
-		color: var(--muted);
-		font-variant-numeric: tabular-nums;
-	}
 
-	.grid-2 {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 24px;
-	}
 	.pipe {
 		padding-block: 36px clamp(36px, 4vw, 56px);
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
 	}
-	.flow {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: 12px;
-	}
-	.flow li {
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
-		padding: 18px 20px;
-		border: 1.5px solid var(--ink);
-		border-radius: 16px;
-		font-size: 19px;
-		font-weight: 500;
-		position: relative;
-	}
-	.flow li:not(:last-child)::after {
-		content: '→';
-		position: absolute;
-		right: -17px;
-		top: 50%;
-		transform: translateY(-50%);
-		background: var(--bg);
-		font-weight: 400;
-		z-index: 1;
-		line-height: 1;
-		padding: 2px 0;
-	}
 	.research {
-		gap: 48px 40px;
 		padding-bottom: var(--section);
 	}
-	.r-item {
-		gap: 14px;
-	}
-	.r-item.wide {
-		grid-column: 1 / -1;
+	.research-photo {
+		margin-bottom: 2rem;
 	}
 	.r-title {
-		font-size: 24px;
+		font-size: 1.5rem;
 	}
 
-	@media (max-width: 860px) {
-		.grid-2 {
-			grid-template-columns: 1fr;
-		}
-		.flow {
-			grid-template-columns: 1fr;
-		}
-		.flow li:not(:last-child)::after {
-			content: '↓';
-			right: auto;
-			left: 20px;
-			top: auto;
-			bottom: -19px;
-			transform: none;
-		}
-	}
 </style>

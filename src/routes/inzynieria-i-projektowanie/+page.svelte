@@ -1,6 +1,9 @@
 <script lang="ts">
 	import PageIntro from '$lib/components/PageIntro.svelte';
 	import Photo from '$lib/components/Photo.svelte';
+	import GasToggle from '$lib/components/GasToggle.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import Carousel from '$lib/components/Carousel.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const page = {
@@ -12,7 +15,7 @@
 		"photo": {
 			"src": "/images/budowa-dron.jpg",
 			"alt": "Budowa biogazowni widziana z drona: fundamenty i zbiorniki w trakcie montażu",
-			"caption": "Budowa instalacji · zdjęcie poglądowe"
+			"caption": "Budowa instalacji, zdjęcie poglądowe"
 		},
 		"sections": [
 			{
@@ -63,7 +66,8 @@
 		}
 	};
 
-	const num = (i: number) => String(i + 1).padStart(2, '0');
+
+	const tones = ['soft', 'white', 'sand', 'ink', 'white', 'green'] as const;
 </script>
 
 {#snippet body(s: { paras?: string[]; items?: string[]; note?: string; img?:{src:string,alt:string}})}
@@ -98,16 +102,22 @@
 	/>
 </div>
 
-	<section class="wrap">
-		<div class="grid-2">
+	<section class="wrap gas-wrap">
+		<GasToggle />
+	</section>
+
+	<section class="wrap carousel-wrap">
+		<div class="carousel-photo">
+			<Photo src="/images/biogazownia-instalacja.jpg" alt="Nowoczesna instalacja biogazowa z zielonymi zbiornikami i rurociągami o wschodzie słońca" caption="Wizualizacja nowoczesnej instalacji, zdjęcie poglądowe" height="22rem" position="center" />
+		</div>
+		<Carousel label="Zakres prac inżynieryjnych">
 			{#each page.sections as s, i}
-				<article class="card tile" class:wide={i === 0 || i === 5}>
-					<span class="idx">{num(i)}</span>
+				<Card tone={tones[i % tones.length]} class="tile">
 					<h2 class="h3 tile-title">{s.title}</h2>
 					{@render body(s)}
-				</article>
+				</Card>
 			{/each}
-		</div>
+		</Carousel>
 	</section>
 
 <section class="section">
@@ -115,6 +125,12 @@
 </section>
 
 <style>
+	.carousel-wrap {
+		padding-bottom: var(--section);
+	}
+	.gas-wrap {
+		padding-bottom: var(--section);
+	}
 	.items {
 		list-style: none;
 		margin: 0;
@@ -131,42 +147,18 @@
 		margin-top: 10px;
 	}
 	.note {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		line-height: 1.6;
 		color: var(--caption);
 		padding-left: 16px;
 		border-left: 2px solid var(--green);
 	}
-	.idx {
-		font-size: 15px;
-		color: var(--muted);
-		font-variant-numeric: tabular-nums;
-	}
 
-	.grid-2 {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 24px;
-	}
-	.tile {
-		gap: 16px;
-		padding: clamp(24px, 2.8vw, 40px);
-	}
-	.tile.wide {
-		grid-column: 1 / -1;
-		background: var(--green-soft);
-		border-color: var(--green-soft);
+	.carousel-photo {
+		margin-bottom: 2rem;
 	}
 	.tile-title {
-		font-size: 24px;
-	}
-	.tile :global(.body) {
-		font-size: 16.5px;
+		font-size: 1.5rem;
 	}
 
-	@media (max-width: 860px) {
-		.grid-2 {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
+	</style>

@@ -27,10 +27,10 @@
 		width: 100%;
 		height: var(--h);
 		object-fit: cover;
-		border-radius: var(--radius);
+		border-radius: 0;
 	}
 	figcaption {
-		font-size: 13.5px;
+		font-size: 0.8438rem;
 		color: var(--caption);
 	}
 	@media (max-width: 860px) {

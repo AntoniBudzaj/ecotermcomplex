@@ -1,5 +1,7 @@
 <script lang="ts">
 	import PageIntro from '$lib/components/PageIntro.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import Photo from '$lib/components/Photo.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const page = {
@@ -57,8 +59,7 @@
 		}
 	};
 
-	const num = (i: number) => String(i + 1).padStart(2, '0');
-</script>
+	</script>
 
 {#snippet body(s: { paras?: string[]; items?: string[]; note?: string })}
 	{#each s.paras ?? [] as p}
@@ -84,12 +85,20 @@
 
 <PageIntro eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
 
+<section class="wrap lead-row">
+	<div class="two" style="align-items: stretch">
+		<Photo src="/images/biogazownia-kopuly.jpg" alt="Biogazownia z lotu ptaka: zbiorniki z kopułami otoczone polami" caption="Zbiorniki fermentacyjne pośród pól, zdjęcie poglądowe" height="340px" position="center 70%" />
+		<Card tone="green" size="lg" class="statement">
+			<p class="statement-text">{page.tagline}</p>
+		</Card>
+	</div>
+</section>
+
 	<section class="wrap">
 		<div class="acc rule">
 			{#each page.sections as s, i}
 				<details open={i === 0}>
 					<summary>
-						<span class="idx">{num(i)}</span>
 						<h2 class="h3 acc-title">{s.title}</h2>
 						<svg class="chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 6.5 L9 12.5 L15 6.5" /></svg>
 					</summary>
@@ -99,11 +108,28 @@
 		</div>
 	</section>
 
+<div class="wrap" style="margin-top: var(--section)">
+	<Photo src="/images/biogazownia-zachod.jpg" alt="Zbiorniki biogazowni na zielonych polach o zachodzie słońca" caption="Instalacja wpisana w wiejski krajobraz, zdjęcie poglądowe" height="300px" position="center 65%" />
+</div>
+
 <section class="section">
 	<CtaBand text={page.cta.text} href="/kontakt/" label={page.cta.label} />
 </section>
 
 <style>
+	.lead-row {
+		margin-bottom: var(--section);
+	}
+	.lead-row :global(.statement) {
+		justify-content: center;
+	}
+	.statement-text {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+		line-height: 1.15;
+		letter-spacing: -0.03em;
+	}
 	.items {
 		list-style: none;
 		margin: 0;
@@ -120,16 +146,11 @@
 		margin-top: 10px;
 	}
 	.note {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		line-height: 1.6;
 		color: var(--caption);
 		padding-left: 16px;
 		border-left: 2px solid var(--green);
-	}
-	.idx {
-		font-size: 15px;
-		color: var(--muted);
-		font-variant-numeric: tabular-nums;
 	}
 
 	details {
@@ -137,7 +158,7 @@
 	}
 	summary {
 		display: grid;
-		grid-template-columns: 56px 1fr 24px;
+		grid-template-columns: 1fr 24px;
 		align-items: center;
 		padding: 28px 0;
 		cursor: pointer;
@@ -147,7 +168,7 @@
 		display: none;
 	}
 	.acc-title {
-		font-size: clamp(20px, 2vw, 28px);
+		font-size: clamp(1.25rem, 2vw, 1.75rem);
 	}
 	.chev {
 		transition: transform 0.2s ease;
@@ -156,7 +177,7 @@
 		transform: rotate(180deg);
 	}
 	.acc-body {
-		padding: 0 24px 36px 56px;
+		padding: 0 24px 36px 0;
 		max-width: 880px;
 	}
 
@@ -165,7 +186,7 @@
 			padding-inline: 0;
 		}
 		summary {
-			grid-template-columns: 40px 1fr 24px;
+			grid-template-columns: 1fr 24px;
 		}
 	}
 </style>

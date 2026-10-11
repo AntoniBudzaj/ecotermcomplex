@@ -2,6 +2,8 @@
 	import Button from '$lib/components/Button.svelte';
 	import PageIntro from '$lib/components/PageIntro.svelte';
 	import Photo from '$lib/components/Photo.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import ReadMore from '$lib/components/ReadMore.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const page = {
@@ -13,7 +15,7 @@
 		"photo": {
 			"src": "/images/biogazownia-kopuly.jpg",
 			"alt": "Biogazownia z lotu ptaka: kilkanaście zbiorników z szarymi kopułami otoczonych polami",
-			"caption": "Zbiorniki fermentacyjne pośród pól · zdjęcie poglądowe"
+			"caption": "Zbiorniki fermentacyjne pośród pól, zdjęcie poglądowe"
 		},
 		"sections": [
 			{
@@ -84,12 +86,29 @@
 	};
 
 	let openPerson = $state<number | null>(null);
+
+	let track: HTMLElement | undefined = $state();
+	let canPrev = $state(false);
+	let canNext = $state(false);
+
+	const sync = () => {
+		if (!track) return;
+		canPrev = track.scrollLeft > 4;
+		canNext = track.scrollLeft + track.clientWidth < track.scrollWidth - 4;
+	};
+	const slide = (dir: 1 | -1) => track?.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' });
+
+	$effect(() => {
+		if (!track) return;
+		sync();
+		const ro = new ResizeObserver(sync);
+		ro.observe(track);
+		return () => ro.disconnect();
+	});
 </script>
 
 {#snippet body(s: { paras?: string[]; items?: string[]; note?: string })}
-	{#each s.paras ?? [] as p}
-		<p class="body">{p}</p>
-	{/each}
+	{#if s.paras?.length}<ReadMore paras={s.paras} />{/if}
 	{#if s.items}
 		<ul class="items">
 			{#each s.items as item}
@@ -108,7 +127,7 @@
 	<meta name="description" content={page.tagline} />
 </svelte:head>
 
-<PageIntro eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
+<PageIntro eyebrow={page.eyebrow} title={page.title} lead={page.lead} fold />
 
 <div class="wrap" style="margin-bottom: var(--section)">
 	<Photo
@@ -121,22 +140,56 @@
 
 	<section class="wrap">
 		<p class="quote">{page.tagline}</p>
-		{#each page.sections as s}
-			<div class="split-rev block rule" style="align-items: start">
-				<h2 class="h2">{s.title}</h2>
-				<div class="stack" style="gap: 18px">{@render body(s)}</div>
-			</div>
+		{#each page.sections as s, i}
+			{#if i === 3}
+				<div class="block">
+					<Card tone="green" size="lg">
+						<div class="split-rev" style="align-items: start">
+							<h2 class="h2">{s.title}</h2>
+							<div class="stack" style="gap: 18px">{@render body(s)}</div>
+						</div>
+					</Card>
+				</div>
+			{:else if i === 4}
+				<div class="block">
+					<div class="two" style="align-items: stretch">
+						<Photo src="/images/zbiornik-dron.jpg" alt="Zbiornik fermentacyjny z zieloną kopułą membranową, widok z drona" caption="Zbiornik fermentacyjny z dachem membranowym, zdjęcie poglądowe" height="340px" position="center 40%" />
+						<Card tone="ink" size="lg">
+							<h2 class="h2">{s.title}</h2>
+							{@render body(s)}
+						</Card>
+					</div>
+				</div>
+			{:else}
+				<div class="split-rev block rule" style="align-items: start">
+					<h2 class="h2">{s.title}</h2>
+					<div class="stack" style="gap: 18px">{@render body(s)}</div>
+				</div>
+			{/if}
+			{#if i === 1}
+				<div class="block">
+					<Photo src="/images/biogazownia-rzepak.jpg" alt="Biogazownia z zielonymi kopułami zbiorników wśród kwitnącego rzepaku" caption="Instalacja w otoczeniu pól, zdjęcie poglądowe" height="340px" position="center 55%" />
+				</div>
+			{/if}
 		{/each}
 	</section>
 
 {#if page.team}
 	<section class="wrap">
 		<div class="team rule">
-			<div class="stack" style="gap: 20px">
-				<div class="eyebrow">Ludzie</div>
+			<div class="team-head">
 				<h2 class="h2">{page.team.title}</h2>
+				<div class="arrows">
+					<Button variant="icon" aria-label="Poprzednie osoby" disabled={!canPrev} onclick={() => slide(-1)}>
+						<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3 L5 9 L11 15" /></svg>
+					</Button>
+					<Button variant="icon" aria-label="Następne osoby" disabled={!canNext} onclick={() => slide(1)}>
+						<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3 L13 9 L7 15" /></svg>
+					</Button>
+				</div>
 			</div>
-			<div class="cols-3">
+			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+			<div class="carousel" bind:this={track} onscroll={sync} role="region" aria-label="Zespół" tabindex="0">
 				{#each page.team.people as person, i}
 					<article class="person">
 						<!-- po dodaniu zdjęcia: <img src=\"/images/....jpg\" alt={person.name} /> -->
@@ -185,7 +238,7 @@
 		margin-top: 10px;
 	}
 	.note {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		line-height: 1.6;
 		color: var(--caption);
 		padding-left: 16px;
@@ -193,7 +246,7 @@
 	}
 
 	.quote {
-		font-size: clamp(22px, 2.2vw, 32px);
+		font-size: clamp(1.375rem, 2.2vw, 2rem);
 		line-height: 1.4;
 		letter-spacing: -0.02em;
 		max-width: 900px;
@@ -206,7 +259,37 @@
 		flex-direction: column;
 		gap: 40px;
 	}
+	.team-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+	}
+	.arrows {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.arrows :global(button:disabled) {
+		opacity: 0.35;
+		cursor: default;
+	}
+	.carousel {
+		display: flex;
+		gap: 1.5rem;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		scrollbar-width: none;
+		margin-inline: calc(var(--pad) * -1);
+		padding-inline: var(--pad);
+		scroll-padding-inline: var(--pad);
+	}
+	.carousel::-webkit-scrollbar {
+		display: none;
+	}
 	.person {
+		flex: 0 0 clamp(16rem, 30vw, 22rem);
+		scroll-snap-align: start;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
@@ -216,14 +299,14 @@
 		width: 100%;
 		aspect-ratio: 4 / 5;
 		object-fit: cover;
-		border-radius: var(--radius);
+		border-radius: 0;
 	}
 	.pname {
-		font-size: 24px;
+		font-size: 1.5rem;
 		margin-top: 12px;
 	}
 	.prole {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		font-weight: 500;
 		color: var(--muted);
 		padding-bottom: 6px;

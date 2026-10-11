@@ -1,6 +1,9 @@
 <script lang="ts">
 	import PageIntro from '$lib/components/PageIntro.svelte';
 	import Photo from '$lib/components/Photo.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import ReadMore from '$lib/components/ReadMore.svelte';
+	import SnakeTimeline from '$lib/components/SnakeTimeline.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const page = {
@@ -12,7 +15,7 @@
 		"photo": {
 			"src": "/images/biogazownia-zachod.jpg",
 			"alt": "Zbiorniki biogazowni na zielonych polach o zachodzie słońca",
-			"caption": "Instalacja wpisana w wiejski krajobraz · zdjęcie poglądowe",
+			"caption": "Instalacja wpisana w wiejski krajobraz, zdjęcie poglądowe",
 			"position": "center 65%"
 		},
 		"sections": [
@@ -71,13 +74,10 @@
 		}
 	};
 
-	const num = (i: number) => String(i + 1).padStart(2, '0');
 </script>
 
 {#snippet body(s: { paras?: string[]; items?: string[]; note?: string })}
-	{#each s.paras ?? [] as p}
-		<p class="body">{p}</p>
-	{/each}
+	{#if s.paras?.length}<ReadMore paras={s.paras} />{/if}
 	{#if s.items}
 		<ul class="items">
 			{#each s.items as item}
@@ -96,7 +96,7 @@
 	<meta name="description" content={page.tagline} />
 </svelte:head>
 
-<PageIntro eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
+<PageIntro eyebrow={page.eyebrow} title={page.title} lead={page.lead} fold />
 
 <div class="wrap" style="margin-bottom: var(--section)">
 	<Photo
@@ -108,18 +108,21 @@
 	/>
 </div>
 
+	<section class="wrap snake-wrap">
+		<SnakeTimeline
+			label="Etapy rozwoju inwestycji"
+			steps={page.sections.slice(0, -1).map((s) => ({ title: s.title, paras: s.paras ?? [] }))}
+		/>
+	</section>
+
 	<section class="wrap">
-		<ol class="timeline">
-			{#each page.sections as s, i}
-				<li>
-					<span class="marker">{num(i)}</span>
-					<div class="stack" style="gap: 14px">
-						<h2 class="h2 tl-title">{s.title}</h2>
-						{@render body(s)}
-					</div>
-				</li>
-			{/each}
-		</ol>
+		<div class="two" style="align-items: stretch">
+			<Card tone="green" size="lg">
+				<h2 class="h2">{page.sections.at(-1)?.title}</h2>
+				{@render body(page.sections.at(-1)!)}
+			</Card>
+			<Photo src="/images/budowa-dron.jpg" alt="Budowa biogazowni widziana z drona: fundamenty i zbiorniki w trakcie montażu" caption="Budowa instalacji, zdjęcie poglądowe" height="340px" position="center" />
+		</div>
 	</section>
 
 <section class="section">
@@ -143,53 +146,13 @@
 		margin-top: 10px;
 	}
 	.note {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		line-height: 1.6;
 		color: var(--caption);
 		padding-left: 16px;
 		border-left: 2px solid var(--green);
 	}
-
-	.timeline {
-		list-style: none;
-		margin: 0;
-		padding: 0 0 0 0;
-		position: relative;
-	}
-	.timeline::before {
-		content: '';
-		position: absolute;
-		left: 23px;
-		top: 12px;
-		bottom: 12px;
-		width: 2px;
-		background: var(--line);
-	}
-	.timeline li {
-		display: grid;
-		grid-template-columns: 48px 1fr;
-		column-gap: clamp(20px, 3vw, 48px);
-		padding-bottom: clamp(40px, 5vw, 72px);
-		position: relative;
-	}
-	.marker {
-		width: 48px;
-		height: 48px;
-		border-radius: 24px;
-		background: var(--green);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: 500;
-		font-size: 15px;
-		position: relative;
-	}
-	.tl-title {
-		font-size: clamp(26px, 2.6vw, 36px);
-		max-width: 720px;
-	}
-	.timeline :global(.body),
-	.timeline .items {
-		max-width: 760px;
+	.snake-wrap {
+		padding-bottom: var(--section);
 	}
 </style>

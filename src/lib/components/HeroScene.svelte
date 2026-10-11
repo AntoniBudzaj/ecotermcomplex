@@ -146,33 +146,33 @@
 		stroke-dashoffset: 1;
 	}
 	.draw.in :global(.sk path) {
-		animation: sk-draw 5.5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+		animation: sk-draw 3s cubic-bezier(0.45, 0, 0.2, 1) forwards;
 	}
 	.draw.in :global(.sk path:nth-child(3n)) {
-		animation-delay: 0.5s;
+		animation-delay: 0.25s;
 	}
 	.draw.in :global(.sk path:nth-child(3n + 1)) {
-		animation-delay: 1s;
+		animation-delay: 0.5s;
 	}
 	.draw :global(.sk .sk-fill) {
 		opacity: 0;
 	}
 	.draw.in :global(.sk .sk-fill) {
-		animation: sk-fade 2s 4.2s forwards;
+		animation: sk-fade 1.2s 2.3s forwards;
 	}
 	.spin {
-		animation: sk-spin 16s linear infinite;
+		animation: sk-spin 9s linear infinite;
 	}
 	.steam path {
 		opacity: 0;
 		transform-box: fill-box;
 		transform-origin: 50% 100%;
-		animation: sk-steam 5s ease-in-out infinite;
+		animation: sk-steam 3.2s ease-in-out infinite;
 	}
-	.steam path:nth-child(2) { animation-delay: 1.6s; }
-	.steam path:nth-child(3) { animation-delay: 3.1s; }
-	.steam path:nth-child(4) { animation-delay: 0.8s; }
-	.steam path:nth-child(5) { animation-delay: 2.6s; }
+	.steam path:nth-child(2) { animation-delay: 1s; }
+	.steam path:nth-child(3) { animation-delay: 2s; }
+	.steam path:nth-child(4) { animation-delay: 0.5s; }
+	.steam path:nth-child(5) { animation-delay: 1.7s; }
 	.steam-static path {
 		opacity: 0.4;
 	}

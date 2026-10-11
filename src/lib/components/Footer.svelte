@@ -5,11 +5,27 @@
 
 <footer class="wrap">
 	<span class="logo"><LogoSmall size={86}/></span>
-	<span>{contact.address} · {contact.phone} · {contact.email}</span>
-	<span>© {new Date().getFullYear()} Ecotermcomplex Sp. z o.o.</span>
+	<span class="contact"><span>{contact.address}</span><span>{contact.phone}</span><span>{contact.email}</span></span>
+	<span class="legal">
+		<span>© {new Date().getFullYear()} Ecotermcomplex Sp. z o.o.</span>
+		<a href="/polityka-prywatnosci/">Polityka prywatności</a>
+	</span>
 </footer>
 
 <style>
+	.legal {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 24px;
+	}
+	.legal a {
+		color: inherit;
+	}
+	.contact {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 24px;
+	}
 	footer {
 		margin-top: var(--section);
 		padding-block: 40px;
@@ -19,11 +35,11 @@
 		gap: 12px 32px;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 14.5px;
+		font-size: 0.9062rem;
 		color: var(--muted);
 	}
 	.logo {
-		font-size: 20px;
+		font-size: 1.25rem;
 		color: var(--ink);
 	}
 	.logo b {

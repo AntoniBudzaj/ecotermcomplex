@@ -1,5 +1,8 @@
 <script lang="ts">
 	import PageIntro from '$lib/components/PageIntro.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import Photo from '$lib/components/Photo.svelte';
+	import Carousel from '$lib/components/Carousel.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const page = {
@@ -98,6 +101,8 @@
 	};
 
 	const num = (i: number) => String(i + 1).padStart(2, '0');
+
+	const tones = ['white', 'soft', 'green', 'sand'] as const;
 </script>
 
 {#snippet body(s: { paras?: string[]; items?: string[]; note?: string })}
@@ -126,9 +131,10 @@
 
 	<section class="wrap">
 		<div class="intro-note">{@render body(page.sections[0])}</div>
-		<div class="grid-3">
-			{#each page.sections.slice(1, -2) as s}
-				<article class="card topic">
+		<div class="topics-wrap">
+		<Carousel label="Kategorie tematów">
+			{#each page.sections.slice(1, -2) as s, i}
+				<Card tone={tones[i % tones.length]} class="topic">
 					<span class="dot"></span>
 					<h2 class="h3">{s.title}</h2>
 					{#each s.paras ?? [] as p}<p class="small">{p}</p>{/each}
@@ -136,21 +142,24 @@
 						{#each s.items ?? [] as item}<li>{item}</li>{/each}
 					</ul>
 					{#if s.note}<p class="note">{s.note}</p>{/if}
-				</article>
+				</Card>
 			{/each}
+		</Carousel>
 		</div>
-		<div class="split-rev block rule" style="align-items: start">
-			<div class="stack" style="gap: 14px">
-				<h2 class="h2">{page.sections.at(-2)?.title}</h2>
-				{#each page.sections.at(-2)?.paras ?? [] as p}<p class="body">{p}</p>{/each}
+		<div class="block rule">
+			<div class="two" style="align-items: stretch">
+				<Photo src="/images/biogazownia-zachod.jpg" alt="Zbiorniki biogazowni na zielonych polach o zachodzie słońca" caption="Instalacja wpisana w wiejski krajobraz, zdjęcie poglądowe" height="340px" position="center 65%" />
+				<Card tone="ink" size="lg">
+					<h2 class="h2">{page.sections.at(-2)?.title}</h2>
+					{#each page.sections.at(-2)?.paras ?? [] as p}<p class="body">{p}</p>{/each}
+				</Card>
 			</div>
-			<span></span>
 		</div>
 		<div class="split-rev block rule" style="align-items: start">
 			<h2 class="h2">{page.sections.at(-1)?.title}</h2>
 			<ol class="articles">
-				{#each page.sections.at(-1)?.items ?? [] as a, i}
-					<li><span class="idx">{num(i)}</span><span class="body">{a}</span></li>
+				{#each page.sections.at(-1)?.items ?? [] as a}
+					<li class="body">{a}</li>
 				{/each}
 			</ol>
 		</div>
@@ -180,16 +189,11 @@
 		margin-top: 10px;
 	}
 	.note {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		line-height: 1.6;
 		color: var(--caption);
 		padding-left: 16px;
 		border-left: 2px solid var(--green);
-	}
-	.idx {
-		font-size: 15px;
-		color: var(--muted);
-		font-variant-numeric: tabular-nums;
 	}
 
 	.intro-note {
@@ -199,14 +203,11 @@
 		max-width: 820px;
 		padding-bottom: clamp(32px, 4vw, 56px);
 	}
-	.grid-3 {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 24px;
+	.topics-wrap {
 		padding-bottom: clamp(32px, 4vw, 56px);
 	}
-	.topic {
-		gap: 12px;
+	.topics-wrap :global(.topic) {
+		gap: 0.75rem;
 	}
 	.chips {
 		list-style: none;
@@ -218,9 +219,9 @@
 	}
 	.chips li {
 		padding: 7px 14px;
-		border-radius: 999px;
-		background: var(--green-soft);
-		font-size: 14.5px;
+		border-radius: 0;
+		background: rgba(255, 255, 255, 0.7);
+		font-size: 0.9062rem;
 		line-height: 1.4;
 	}
 	.articles {
@@ -229,15 +230,8 @@
 		padding: 0;
 	}
 	.articles li {
-		display: grid;
-		grid-template-columns: 48px 1fr;
 		padding: 18px 0;
 		border-top: 1px solid var(--line);
 	}
 
-	@media (max-width: 860px) {
-		.grid-3 {
-			grid-template-columns: 1fr;
-		}
-	}
 </style>

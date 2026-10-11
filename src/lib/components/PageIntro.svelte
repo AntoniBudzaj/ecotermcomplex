@@ -1,26 +1,31 @@
 <script lang="ts">
+	import ReadMore from './ReadMore.svelte';
+
 	/** Nagłówek podstrony: etykieta, tytuł i opcjonalny lead po prawej. */
 	interface Props {
-		eyebrow: string;
+		eyebrow?: string;
 		title: string;
 		lead?: string;
+		/** na telefonie pokaż tylko pierwsze zdanie wstępu, resztę po kliknięciu */
+		fold?: boolean;
 	}
 
-	let { eyebrow, title, lead = '' }: Props = $props();
+	let { title, lead = '', fold = false }: Props = $props();
 </script>
 
 <section class="wrap intro" class:split={lead}>
 	<div class="stack" style="gap: 24px">
-		<div class="eyebrow">{eyebrow}</div>
 		<h1 class="h1">{title}</h1>
 	</div>
-	{#if lead}<p class="lead">{lead}</p>{/if}
+	{#if lead}
+		{#if fold}<ReadMore paras={[lead]} type="lead" />{:else}<p class="lead">{lead}</p>{/if}
+	{/if}
 </section>
 
 <style>
 	.intro {
-		padding-top: clamp(56px, 7.2vw, 104px);
-		padding-bottom: clamp(48px, 6.2vw, 88px);
+		padding-top: clamp(1.75rem, 4vw, 4rem);
+		padding-bottom: clamp(2rem, 6vw, 5.5rem);
 	}
 	.intro:not(.split) .stack {
 		max-width: 960px;

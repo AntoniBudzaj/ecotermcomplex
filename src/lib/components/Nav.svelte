@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { links } from '$lib/nav';
-    import { MediaQuery } from 'svelte/reactivity';
 	import Button from './Button.svelte';
     import LogoFull from './LogoFull.svelte';
 
@@ -15,13 +14,11 @@
 		open = false;
 	});
 
-  const phone = new MediaQuery('min-width: 800px');
 </script>
-<header class="wrap">
+<header class="bar">
+<div class="wrap inner">
 	<a href="/" class="logo" aria-label="Ecotermcomplex – strona główna">
-    {#if phone.current}
-    <LogoFull size={48}/>
-{/if}
+		<LogoFull size={40} />
 	</a>
 
 	<Button
@@ -55,77 +52,82 @@
 		{/each}
 		<Button href="/kontakt/" variant="outline" class="pill" selected={isActive('/kontakt/')}>Kontakt</Button>
 	</nav>
+</div>
 </header>
 
 <style>
-	header {
-		height: 96px;
+	.bar {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: var(--bg);
+		border-bottom: 1.5px solid var(--line);
+	}
+	.inner {
+		height: 5rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		position: relative;
-		z-index: 10;
 	}
 	.logo {
-		font-size: 24px;
-		letter-spacing: -0.02em;
+		display: flex;
+		align-items: center;
 		text-decoration: none;
 	}
-	.b {
-		font-weight: 600;
-	}
-	.l {
-		font-weight: 300;
+	.logo :global(svg) {
+		display: block;
+		width: auto;
 	}
 	nav {
 		display: flex;
 		align-items: center;
-		gap: 28px;
-		font-size: 16px;
+		gap: 1.75rem;
+		font-size: 1rem;
 	}
-	header :global(.toggle) {
+	.inner :global(.toggle) {
 		display: none;
 	}
 
 	@media (max-width: 1100px) {
-		header {
-			height: 72px;
+		.inner {
+			height: 3.75rem;
 		}
-		.logo {
-			font-size: 21px;
+		.logo :global(svg) {
+			height: 1.875rem;
 		}
-		header :global(.toggle) {
+		.inner :global(.toggle) {
 			display: inline-flex;
 		}
 		nav {
 			display: none;
 			position: absolute;
-			top: 72px;
+			top: 100%;
 			left: 0;
 			right: 0;
 			flex-direction: column;
 			align-items: stretch;
 			gap: 0;
-			padding: 8px var(--pad) 24px;
+			padding: 0.5rem var(--pad) 1.5rem;
 			background: var(--bg);
 			border-bottom: 1.5px solid var(--line);
-			font-size: 20px;
+			font-size: 1.125rem;
+			max-height: calc(100dvh - 3.75rem);
+			overflow-y: auto;
 		}
 		nav.open {
 			display: flex;
 		}
 		nav :global(.nav-link) {
 			justify-content: flex-start;
-			padding: 14px 0;
+			padding: 0.75rem 0;
 			border-bottom: 1px solid var(--line);
 		}
 		nav :global(.nav-link[data-selected]) {
-			border-bottom-color: var(--line);
-			box-shadow: inset 3px 0 0 var(--green);
-			padding-left: 14px;
+			border-bottom: 3px solid var(--green);
+			padding-bottom: calc(0.75rem - 2px);
 		}
 		nav :global(.pill) {
-			margin-top: 18px;
+			margin-top: 1rem;
 		}
 	}
 </style>

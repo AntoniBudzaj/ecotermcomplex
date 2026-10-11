@@ -8,7 +8,7 @@
 	 * primary – ciemny, pełny (główne wezwanie do działania)
 	 * outline – kontur, po `selected` wypełniony zielenią
 	 * chip    – mała pigułka do wyboru opcji, po `selected` zielona
-	 * link    – tekst ze strzałką w treści, np. „Więcej →”
+	 * link    – podkreślony link w treści, np. „Więcej”
 	 * text    – podkreślony tekst, np. „Czytaj więcej”
 	 * nav     – link w menu, po `selected` zielone podkreślenie
 	 * icon    – okrągły przycisk z ikoną (np. menu na telefonie)
@@ -48,7 +48,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		font-family: 'DM Sans', sans-serif;
+		font-family: var(--font-body);
 		text-decoration: none;
 		cursor: pointer;
 		padding: 8px 22px;
@@ -94,7 +94,7 @@
 		border: 1.5px solid var(--ink);
 		background: transparent;
 		color: var(--ink);
-		font: 400 15px 'DM Sans', sans-serif;
+		font: 400 0.9375rem var(--font-body);
 	}
 	.btn[data-variant='chip'][data-selected] {
 		background: var(--green);
@@ -103,11 +103,12 @@
 
 	/* link */
 	.btn[data-variant='link'] {
+		justify-content: flex-start;
 		padding: 0;
 		border: 0;
 		background: none;
 		color: var(--ink);
-		font-size: 16.5px;
+		font-size: 1.0312rem;
 		font-weight: 500;
 		text-decoration: underline;
 	}
@@ -119,11 +120,12 @@
 
 	/* text */
 	.btn[data-variant='text'] {
+		justify-content: flex-start;
 		padding: 0;
 		border: 0;
 		background: none;
 		color: var(--ink);
-		font: 500 16px 'DM Sans', sans-serif;
+		font: 500 1rem var(--font-body);
 		text-decoration: underline;
 		text-underline-offset: 5px;
 		text-decoration-color: var(--green);
@@ -133,7 +135,7 @@
 	/* nav (:where, żeby menu mogło łatwo nadpisać wygląd w widoku mobilnym) */
 	.btn:where([data-variant='nav']) {
 		padding: 0 0 4px;
-    border-radius: 0px;
+    border-radius: 0;
 		border: 0;
 		border-bottom: 2px solid transparent;
 		background: none;
@@ -162,6 +164,6 @@
 	/* rozmiar */
 	.btn[data-variant='outline'][data-size='sm'] {
 		padding: 9px 18px;
-		font-size: 15px;
+		font-size: 0.9375rem;
 	}
 </style>

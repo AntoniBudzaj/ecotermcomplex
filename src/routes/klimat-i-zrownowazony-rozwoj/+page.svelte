@@ -1,6 +1,8 @@
 <script lang="ts">
 	import PageIntro from '$lib/components/PageIntro.svelte';
 	import Photo from '$lib/components/Photo.svelte';
+	import CycleDiagram from '$lib/components/CycleDiagram.svelte';
+	import Card from '$lib/components/Card.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 
 	const page = {
@@ -12,7 +14,7 @@
 		"photo": {
 			"src": "/images/biogazownia-rzepak.jpg",
 			"alt": "Biogazownia z zielonymi kopułami zbiorników wśród kwitnącego rzepaku",
-			"caption": "Instalacja w otoczeniu pól · zdjęcie poglądowe",
+			"caption": "Instalacja w otoczeniu pól, zdjęcie poglądowe",
 			"position": "center 55%"
 		},
 		"sections": [
@@ -62,6 +64,14 @@
 			"label": "Skontaktuj się z nami"
 		}
 	};
+	const cycle = [
+		{ title: 'Substraty', text: 'Produkty uboczne rolnictwa, przetwórstwa spożywczego i inne dopuszczone strumienie biodegradowalne. Kontrolujemy ich pochodzenie i możliwość przetwarzania.' },
+		{ title: 'Fermentacja', text: 'Beztlenowy rozkład materii organicznej w zbiornikach. Bilanse masowe i energetyczne decydują o stabilności procesu.' },
+		{ title: 'Biogaz', text: 'Oczyszczony biogaz zasila kogenerację albo jest uzdatniany do biometanu.' },
+		{ title: 'Energia i biometan', text: 'Prąd, ciepło lub odnawialny gaz. Redukcja emisji zależy od łańcucha dostaw, strat metanu i metodyki obliczeń.' },
+		{ title: 'Poferment', text: 'Produkt uboczny fermentacji. Jego jakość i zagospodarowanie wpływają na ekonomię i logistykę przedsięwzięcia.' },
+		{ title: 'Pola', text: 'Odpowiednio prowadzona gospodarka pofermentem może wspierać obieg składników pokarmowych.' }
+	];
 </script>
 
 {#snippet body(s: { paras?: string[]; items?: string[]; note?: string })}
@@ -98,14 +108,32 @@
 	/>
 </div>
 
-	<section class="bands">
+	<section class="wrap cycle-wrap">
+	<CycleDiagram nodes={cycle} />
+</section>
+
+<section class="bands">
 		{#each page.sections as s, i}
-			<div class="band" class:soft={i % 2 === 0}>
-				<div class="wrap band-in" class:flip={i % 2 === 1}>
-					<h2 class="h2">{s.title}</h2>
-					<div class="stack" style="gap: 18px">{@render body(s)}</div>
+			{#if i === 4}
+				<div class="band-card wrap">
+					<Card tone="green" size="lg">
+						<div class="band-in-card">
+							<h2 class="h2">{s.title}</h2>
+							<div class="stack" style="gap: 18px">{@render body(s)}</div>
+						</div>
+					</Card>
 				</div>
-			</div>
+			{:else}
+				<div class="band" class:soft={i % 2 === 0}>
+					<div class="wrap band-in" class:flip={i % 2 === 1}>
+						<h2 class="h2">{s.title}</h2>
+						<div class="stack" style="gap: 18px">
+							{@render body(s)}
+							{#if i === 1}<Photo src="/images/zbiornik-dron.jpg" alt="Zbiornik fermentacyjny z zieloną kopułą membranową, widok z drona" caption="Zbiornik fermentacyjny z dachem membranowym, zdjęcie poglądowe" height="340px" position="center 40%" />{:else if i === 3}<Photo src="/images/biogazownia-instalacja.jpg" alt="Nowoczesna instalacja biogazowa z zielonymi zbiornikami i rurociągami o wschodzie słońca" caption="Wizualizacja nowoczesnej instalacji, zdjęcie poglądowe" height="340px" position="center" />{/if}
+						</div>
+					</div>
+				</div>
+			{/if}
 		{/each}
 	</section>
 
@@ -114,6 +142,24 @@
 </section>
 
 <style>
+	.band-card {
+		padding-block: clamp(1.5rem, 3vw, 2.5rem);
+	}
+	.band-in-card {
+		display: grid;
+		grid-template-columns: 5fr 7fr;
+		column-gap: clamp(2.5rem, 6.6vw, 6rem);
+		align-items: start;
+	}
+	@media (max-width: 860px) {
+		.band-in-card {
+			grid-template-columns: 1fr;
+			row-gap: 1.25rem;
+		}
+	}
+	.cycle-wrap {
+		padding-bottom: var(--section);
+	}
 	.items {
 		list-style: none;
 		margin: 0;
@@ -130,7 +176,7 @@
 		margin-top: 10px;
 	}
 	.note {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		line-height: 1.6;
 		color: var(--caption);
 		padding-left: 16px;

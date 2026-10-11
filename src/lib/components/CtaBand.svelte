@@ -21,14 +21,14 @@
 	.band {
 		padding: clamp(40px, 5vw, 72px) clamp(28px, 5.5vw, 80px);
 		background: var(--green);
-		border-radius: var(--radius);
+		border-radius: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		gap: 32px 64px;
 	}
 	p {
-		font-size: clamp(24px, 2.4vw, 34px);
+		font-size: clamp(1.5rem, 2.4vw, 2.125rem);
 		line-height: 1.3;
 		letter-spacing: -0.02em;
 		max-width: 780px;

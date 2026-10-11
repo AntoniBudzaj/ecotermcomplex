@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import FormGrid from '$lib/components/FormGrid.svelte';
+	import Field from '$lib/components/Field.svelte';
 	import Photo from '$lib/components/Photo.svelte';
 	import { contact } from '$lib/nav';
 
@@ -44,7 +46,7 @@
 	</div>
 
 	<form
-		class="card form"
+		class="form"
 		onsubmit={(e) => {
 			e.preventDefault();
 			sent = true;
@@ -54,53 +56,26 @@
 			<h2 class="h3">Dziękujemy za wiadomość!</h2>
 			<p class="form-note" role="status">Odezwiemy się, aby ustalić najbliższy możliwy krok.</p>
 		{:else}
-			<div class="fields-2">
-				<div class="field">
-					<label for="ec-name">Imię i nazwisko</label>
-					<input id="ec-name" name="name" type="text" autocomplete="name" required />
+			<FormGrid>
+				<Field half id="ec-name" name="name" label="Imię i nazwisko" autocomplete="name" required />
+				<Field half id="ec-org" name="organization" label="Firma / organizacja" hint="Opcjonalne" autocomplete="organization" />
+				<Field half id="ec-mail" name="email" type="email" label="E-mail" autocomplete="email" required />
+				<Field half id="ec-tel" name="phone" type="tel" label="Telefon" hint="Opcjonalne" autocomplete="tel" />
+				<Field half id="ec-topic" name="topic" type="select" label="Temat współpracy" options={topics} bind:value={topic} />
+				<Field half id="ec-loc" name="location" label="Lokalizacja inwestycji" hint="Opcjonalne" />
+				<Field id="ec-msg" name="message" type="textarea" label="Wiadomość" required />
+				<!-- pole antyspamowe: ukryte przed ludźmi, boty je wypełniają -->
+				<div class="hp" aria-hidden="true">
+					<label for="ec-web">Nie wypełniaj tego pola</label>
+					<input id="ec-web" name="website" type="text" tabindex="-1" autocomplete="off" />
 				</div>
-				<div class="field">
-					<label for="ec-org">Firma / organizacja</label>
-					<input id="ec-org" name="organization" type="text" autocomplete="organization" />
+				<Field id="ec-rodo" name="consent" type="checkbox" required>
+					Zgadzam się na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na wiadomość, zgodnie z <a href="/polityka-prywatnosci/">Polityką prywatności</a>.
+				</Field>
+				<div class="actions" data-span="full">
+					<Button type="submit">Wyślij wiadomość</Button>
 				</div>
-			</div>
-			<div class="fields-2">
-				<div class="field">
-					<label for="ec-mail">E-mail</label>
-					<input id="ec-mail" name="email" type="email" autocomplete="email" required />
-				</div>
-				<div class="field">
-					<label for="ec-tel">Telefon (opcjonalnie)</label>
-					<input id="ec-tel" name="phone" type="tel" autocomplete="tel" />
-				</div>
-			</div>
-			<fieldset class="field">
-				<legend class="label">Temat współpracy</legend>
-				<div class="topics">
-					{#each topics as t}
-						<Button variant="chip" selected={topic === t} aria-pressed={topic === t} onclick={() => (topic = t)}>{t}</Button>
-					{/each}
-				</div>
-				<input type="hidden" name="topic" value={topic} />
-			</fieldset>
-			<div class="field">
-				<label for="ec-loc">Lokalizacja inwestycji (opcjonalnie)</label>
-				<input id="ec-loc" name="location" type="text" />
-			</div>
-			<div class="field">
-				<label for="ec-msg">Wiadomość</label>
-				<textarea id="ec-msg" name="message" required></textarea>
-			</div>
-			<!-- pole antyspamowe: ukryte przed ludźmi, boty je wypełniają -->
-			<div class="hp" aria-hidden="true">
-				<label for="ec-web">Nie wypełniaj tego pola</label>
-				<input id="ec-web" name="website" type="text" tabindex="-1" autocomplete="off" />
-			</div>
-			<div class="consent">
-				<input id="ec-rodo" type="checkbox" required />
-				<label for="ec-rodo">Zgadzam się na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na wiadomość.</label>
-			</div>
-			<Button type="submit" class="submit">Wyślij wiadomość</Button>
+			</FormGrid>
 		{/if}
 	</form>
 </section>
@@ -124,7 +99,7 @@
 		<Photo
 			src="/images/zbiornik-dron.jpg"
 			alt="Zbiornik biogazowni z zieloną kopułą otoczony lasem, widok z drona"
-			caption="Zbiornik fermentacyjny z dachem membranowym · zdjęcie poglądowe"
+			caption="Zbiornik fermentacyjny z dachem membranowym, zdjęcie poglądowe"
 			height="420px"
 			position="center 45%"
 		/>
@@ -156,7 +131,7 @@
 		padding-top: clamp(56px, 7.2vw, 104px);
 		padding-bottom: clamp(48px, 6.6vw, 96px);
 		display: grid;
-		grid-template-columns: 5fr 7fr;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
 		column-gap: clamp(40px, 6.6vw, 96px);
 		align-items: start;
 	}
@@ -171,48 +146,18 @@
 		border-bottom: 1px solid var(--line);
 	}
 	dt {
-		font-size: 14px;
+		font-size: 0.875rem;
 		color: var(--muted);
 	}
 	dd {
 		margin: 4px 0 0;
-		font-size: 18px;
+		font-size: 1.125rem;
 	}
 	.form {
 		gap: 20px;
+    background-color: var(--green-soft);
 		padding: clamp(24px, 3.3vw, 48px);
-		border-radius: var(--radius);
-	}
-	fieldset {
-		border: 0;
-		padding: 0;
-		margin: 0;
-	}
-	legend {
-		margin-bottom: 10px;
-	}
-	.topics {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-	}
-	.form :global(.submit) {
-		align-self: flex-start;
-	}
-	.consent {
-		display: flex;
-		gap: 12px;
-		align-items: flex-start;
-		font-size: 14px;
-		line-height: 1.5;
-		color: var(--muted);
-	}
-	.consent input {
-		width: 20px;
-		height: 20px;
-		margin: 1px 0 0;
-		flex-shrink: 0;
-		accent-color: var(--ink);
+		border-radius: 0;
 	}
 	.reasons {
 		list-style: none;
@@ -226,6 +171,9 @@
 		display: flex;
 		gap: 16px;
 	}
+	.actions {
+		display: flex;
+	}
 	.hp {
 		position: absolute;
 		left: -9999px;
@@ -235,14 +183,14 @@
 	}
 	.closing {
 		padding-top: var(--section);
-		font-size: clamp(20px, 1.7vw, 24px);
+		font-size: clamp(1.25rem, 1.7vw, 1.5rem);
 		line-height: 1.55;
 		letter-spacing: -0.01em;
 		max-width: 900px;
 	}
 	@media (max-width: 860px) {
 		.intro {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 			row-gap: 40px;
 		}
 	}
