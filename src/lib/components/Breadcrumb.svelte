@@ -2,13 +2,16 @@
 	import { page } from '$app/state';
 	import { links } from '$lib/nav';
 
+	const extra: Record<string, string> = {
+		'/kontakt/': 'Kontakt',
+		'/etcheck/': 'ETCheck',
+		'/polityka-prywatnosci/': 'Polityka prywatności'
+	};
+
 	const label = $derived(
 		links.find((l) => page.url.pathname.startsWith(l.href))?.label ??
-			(page.url.pathname.startsWith('/kontakt/')
-				? 'Kontakt'
-				: page.url.pathname.startsWith('/polityka-prywatnosci/')
-					? 'Polityka prywatności'
-					: '')
+			Object.entries(extra).find(([href]) => page.url.pathname.startsWith(href))?.[1] ??
+			''
 	);
 </script>
 

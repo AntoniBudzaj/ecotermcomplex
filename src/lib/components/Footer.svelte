@@ -8,6 +8,7 @@
 	<span class="contact"><span>{contact.address}</span><span>{contact.phone}</span><span>{contact.email}</span></span>
 	<span class="legal">
 		<span>© {new Date().getFullYear()} Ecotermcomplex Sp. z o.o.</span>
+		<a href="/etcheck/">ETCheck</a>
 		<a href="/polityka-prywatnosci/">Polityka prywatności</a>
 	</span>
 </footer>
