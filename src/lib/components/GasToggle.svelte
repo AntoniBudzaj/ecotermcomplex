@@ -409,6 +409,13 @@
 		.lane:first-of-type {
 			margin-top: 1.5rem;
 		}
+		/* na telefonie pokazuj tylko wybraną ścieżkę */
+		.lane[aria-pressed='false'] {
+			display: none;
+		}
+		.lane[aria-pressed='true'] {
+			margin-top: 1.5rem;
+		}
 		.lane .f-node:first-child {
 			margin-right: 0;
 			margin-bottom: 1.25rem;
